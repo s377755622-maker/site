@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,71 +6,30 @@
 <meta name="theme-color" content="#100817">
 <title>Angel LuaLab — Academia Digital</title>
 <style>
-:root{
-  --bg:#100817;
-  --panel:#1c1028;
-  --panel2:#281639;
-  --gold:#f4d27d;
-  --purple:#b58aff;
-  --text:#f8f0ff;
-  --muted:#bdb0cb;
-  --border:#513765;
-  --green:#91e8bc;
-}
+:root{--bg:#100817;--panel:#1c1028;--panel2:#281639;--gold:#f4d27d;--purple:#b58aff;--text:#f8f0ff;--muted:#bdb0cb;--border:#513765;--green:#91e8bc}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  margin:0;background:
-  radial-gradient(ellipse at 10% 0%,#45215a66,transparent 45%),
-  radial-gradient(ellipse at 100% 30%,#39204a55,transparent 40%),
-  var(--bg);
-  color:var(--text);font-family:Arial,sans-serif;line-height:1.6;
-}
-button,input,textarea,select{font:inherit}
+body{margin:0;background:radial-gradient(ellipse at 10% 0%,#45215a66,transparent 45%),radial-gradient(ellipse at 100% 30%,#39204a55,transparent 40%),var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+button,input,textarea{font:inherit}
 button{cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
-  outline:2px solid var(--gold);outline-offset:3px
-}
+button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 a{color:var(--gold);text-decoration:none}
-a:hover{text-decoration:underline}
-.topbar{
-  position:sticky;top:0;z-index:10;
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding:12px 5%;background:#100817ed;backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--border)
-}
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 5%;background:#100817ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--border)}
 .brand{font-weight:900;color:var(--gold);font-size:18px;letter-spacing:.5px}
 .brand span{color:var(--purple)}
 .nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.nav button,.secondary{
-  background:transparent;color:var(--text);border:1px solid var(--border);
-  border-radius:10px;padding:8px 11px
-}
+.nav button,.secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:8px 11px}
 .nav button:hover,.secondary:hover{border-color:var(--gold);color:var(--gold)}
-.primary{
-  border:0;border-radius:11px;padding:12px 16px;
-  background:linear-gradient(110deg,var(--gold),#e8b9ff);
-  color:#21102c;font-weight:800
-}
+.primary{border:0;border-radius:11px;padding:12px 16px;background:linear-gradient(110deg,var(--gold),#e8b9ff);color:#21102c;font-weight:800}
 .primary:hover{filter:brightness(1.08)}
 .danger{color:#ffc0d0;border:1px solid #9b4764;background:#391628}
 .wrap{max-width:1100px;margin:auto;padding:25px 18px 60px}
-.hero{
-  position:relative;overflow:hidden;padding:clamp(25px,6vw,60px);
-  border:1px solid #77558b;border-radius:25px;
-  background:linear-gradient(135deg,#321b45ed,#171020f5 70%);
-  box-shadow:0 15px 60px #0005
-}
-.hero:after{
-  content:"✦";position:absolute;right:8%;top:10%;
-  font-size:clamp(90px,18vw,190px);color:#f4d27d15;
-  pointer-events:none
-}
+.hero{position:relative;overflow:hidden;padding:clamp(25px,6vw,60px);border:1px solid #77558b;border-radius:25px;background:linear-gradient(135deg,#321b45ed,#171020f5 70%);box-shadow:0 15px 60px #0005}
+.hero:after{content:"✦";position:absolute;right:8%;top:10%;font-size:clamp(90px,18vw,190px);color:#f4d27d15;pointer-events:none}
 .eyebrow{color:var(--gold);font-size:12px;letter-spacing:3px;font-weight:bold}
 h1{font-size:clamp(34px,7vw,64px);line-height:1.05;margin:15px 0}
 h1 span{color:var(--gold)}
 h2{font-size:26px;line-height:1.25}
-h3{line-height:1.3}
 p{color:#e3d8ed}
 .muted{color:var(--muted);font-size:14px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
@@ -79,594 +37,380 @@ p{color:#e3d8ed}
 .sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
 .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.card{
-  min-width:0;padding:20px;border:1px solid var(--border);
-  background:linear-gradient(145deg,#241432,#1a1023);
-  border-radius:17px;box-shadow:0 10px 28px #0002
-}
+.card{min-width:0;padding:20px;border:1px solid var(--border);background:linear-gradient(145deg,#241432,#1a1023);border-radius:17px;box-shadow:0 10px 28px #0002}
 .card:hover{border-color:#9470b1}
-.iconbox{
-  display:grid;place-items:center;width:47px;height:47px;border-radius:14px;
-  background:#4b2b5b;color:var(--gold);font-size:23px
-}
+.iconbox{display:grid;place-items:center;width:47px;height:47px;border-radius:14px;background:#4b2b5b;color:var(--gold);font-size:23px}
 .card h3{margin-bottom:7px}
 .tag{display:inline-block;border:1px solid #674a7b;border-radius:20px;padding:4px 9px;font-size:11px;color:var(--purple)}
-.stat{font-size:30px;font-weight:900;color:var(--gold)}
+.stat{font-size:30px;font-weight:900;color:var(--gold);overflow-wrap:anywhere}
 .progress{height:9px;background:#3a2948;border-radius:20px;overflow:hidden}
 .progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width .3s}
 .lessonlist{display:grid;gap:12px}
-.lessonrow{
-  display:flex;align-items:center;gap:14px;padding:15px;
-  background:#20132c;border:1px solid var(--border);border-radius:14px
-}
+.lessonrow{display:flex;align-items:center;gap:14px;padding:15px;background:#20132c;border:1px solid var(--border);border-radius:14px}
 .lessonrow .grow{flex:1;min-width:0}
 .lessonrow h3{margin:0 0 5px}
 .lessonrow p{margin:0}
 .lessonrow button{flex-shrink:0}
-.formbox{max-width:480px;margin:30px auto}
 .field{display:grid;gap:6px;margin:14px 0}
 .field label{color:var(--muted);font-size:14px}
-.field input,.field textarea,.field select{
-  width:100%;padding:12px;background:#120b1b;border:1px solid var(--border);
-  border-radius:10px;color:white
-}
-.field textarea{min-height:110px;resize:vertical}
+.field input{width:100%;padding:12px;background:#120b1b;border:1px solid var(--border);border-radius:10px;color:white}
 .notice{padding:13px;background:#30213b;border-left:3px solid var(--gold);border-radius:7px;font-size:13px;color:var(--muted)}
 .hidden{display:none!important}
 .badge{color:var(--green);font-size:12px;font-weight:bold}
-.answer{
-  display:block;width:100%;text-align:left;padding:12px;margin:8px 0;
-  background:#1a1024;color:white;border:1px solid var(--border);border-radius:10px
-}
+.answer{display:block;width:100%;text-align:left;padding:12px;margin:8px 0;background:#1a1024;color:white;border:1px solid var(--border);border-radius:10px}
 .answer:hover{border-color:var(--purple)}
 .answer.correct{border-color:var(--green);background:#163326}
 .answer.wrong{border-color:#f58caa;background:#391628}
-.codepreview{
-  padding:15px;border-radius:12px;background:#0c0811;border:1px solid #493358;
-  overflow-wrap:anywhere;color:#d7c5f2;font-family:monospace;white-space:pre-wrap
-}
-footer{text-align:center;border-top:1px solid var(--border);padding:24px 10px;margin-top:45px}
+.codepreview{padding:15px;border-radius:12px;background:#0c0811;border:1px solid #493358;overflow-wrap:anywhere;color:#d7c5f2;font-family:monospace;white-space:pre-wrap}
 .toast{margin-top:12px;color:var(--green);font-size:14px}
-@media(max-width:760px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .topbar{padding:10px 12px;align-items:flex-start}
-  .nav{justify-content:flex-end}
-  .nav button{font-size:12px;padding:7px}
-}
-@media(max-width:500px){
-  .grid,.grid.two{grid-template-columns:1fr}
-  .topbar{display:block}
-  .nav{margin-top:10px;justify-content:flex-start}
-  .hero{padding:24px 19px}
-  .lessonrow{align-items:flex-start;flex-wrap:wrap}
-  .lessonrow .grow{min-width:65%}
-}
+.viplock{padding:20px;text-align:center;border:1px dashed var(--gold);border-radius:15px;background:#241432}
+.tasktimer{font-size:22px;font-weight:bold;color:var(--gold)}
+footer{text-align:center;border-top:1px solid var(--border);padding:24px 10px;margin-top:45px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{padding:10px 12px;align-items:flex-start}.nav{justify-content:flex-end}.nav button{font-size:12px;padding:7px}}
+@media(max-width:500px){.grid,.grid.two{grid-template-columns:1fr}.topbar{display:block}.nav{margin-top:10px;justify-content:flex-start}.hero{padding:24px 19px}.lessonrow{align-items:flex-start;flex-wrap:wrap}.lessonrow .grow{min-width:65%}}
 </style>
 </head>
-
 <body>
 <header class="topbar">
-  <a class="brand" href="#inicio">☾ ANGEL <span>LŪALAB</span></a>
-  <nav class="nav" aria-label="Navegação principal">
-    <button data-go="inicio">Início</button>
-    <button data-go="aulas">Aulas</button>
-    <button data-go="praticas">Práticas</button>
-    <button data-go="perfil">Perfil</button>
-    <button id="accountBtn" class="primary">Entrar</button>
-  </nav>
+<a class="brand" href="#inicio">☾ ANGEL <span>LUALAB</span></a>
+<nav class="nav" aria-label="Navegação principal">
+<button data-go="inicio">Início</button>
+<button data-go="aulas">Aulas</button>
+<button data-go="praticas">Práticas</button>
+<button data-go="tarefas">Tarefas</button>
+<button data-go="vip">VIP</button>
+<button data-go="perfil">Perfil</button>
+<button id="accountBtn" class="primary">Entrar</button>
+</nav>
 </header>
 
 <div class="wrap">
-  <section id="inicio">
-    <div class="hero">
-      <div class="eyebrow">ACADEMIA DIGITAL • DESDE 15.10.2026</div>
-      <h1>O teu próximo nível começa <span>aqui.</span></h1>
-      <p>Aprende programação, explora a tecnologia e transforma curiosidade em conhecimento. Um passo de cada vez.</p>
-      <p class="muted">✦ Aulas • Exercícios • Progresso pessoal • Segurança digital</p>
-      <div class="actions">
-        <button class="primary" data-go="aulas">Explorar aulas →</button>
-        <button class="secondary" data-go="praticas">Experimentar exercícios</button>
-      </div>
-    </div>
+<section id="inicio">
+<div class="hero">
+<div class="eyebrow">ACADEMIA DIGITAL • DESDE 15.10.2026</div>
+<h1>O teu próximo nível começa <span>aqui.</span></h1>
+<p>Aprende programação, explora a tecnologia e transforma curiosidade em conhecimento. Um passo de cada vez.</p>
+<p class="muted">✦ Aulas • Exercícios • Tarefas • Área VIP</p>
+<div class="actions">
+<button class="primary" data-go="aulas">Explorar aulas →</button>
+<button class="secondary" data-go="praticas">Experimentar exercícios</button>
+<button class="secondary" data-go="vip">Conhecer a Área VIP ✨</button>
+</div>
+</div>
 
-    <section class="section">
-      <div class="sectionhead">
-        <h2>O teu painel</h2>
-        <span class="tag" id="welcomeTag">VISITANTE</span>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="iconbox">📚</div>
-          <p class="muted">Aulas concluídas</p>
-          <div class="stat" id="statLessons">0</div>
-          <div class="progress"><span id="lessonBar"></span></div>
-        </article>
-        <article class="card">
-          <div class="iconbox">✦</div>
-          <p class="muted">Pontos de aprendizagem</p>
-          <div class="stat" id="statPoints">0</div>
-          <p class="muted">Ganhos ao concluir aulas e exercícios.</p>
-        </article>
-        <article class="card">
-          <div class="iconbox">🎯</div>
-          <p class="muted">Exercícios acertados</p>
-          <div class="stat" id="statQuiz">0</div>
-          <p class="muted">Continua a praticar para melhorar.</p>
-        </article>
-      </div>
-    </section>
+<section class="section">
+<div class="sectionhead"><h2>O teu painel</h2><span class="tag" id="welcomeTag">VISITANTE</span></div>
+<div class="grid">
+<article class="card"><div class="iconbox">📚</div><p class="muted">Aulas concluídas</p><div class="stat" id="statLessons">0</div><div class="progress"><span id="lessonBar"></span></div></article>
+<article class="card"><div class="iconbox">✦</div><p class="muted">Pontos de aprendizagem</p><div class="stat" id="statPoints">0</div><p class="muted">Conclui aulas e tarefas para ganhar pontos.</p></article>
+<article class="card"><div class="iconbox">🎯</div><p class="muted">Exercícios acertados</p><div class="stat" id="statQuiz">0</div><p class="muted">Continua a praticar!</p></article>
+</div>
+</section>
 
-    <section class="section">
-      <div class="sectionhead">
-        <h2>Começa por aqui</h2>
-        <span class="muted">Para iniciantes</span>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="iconbox">🌐</div>
-          <h3>HTML</h3>
-          <p class="muted">Aprende a criar a estrutura de páginas web.</p>
-          <button class="secondary" data-lesson="html">Abrir aula</button>
-        </article>
-        <article class="card">
-          <div class="iconbox">🎨</div>
-          <h3>CSS</h3>
-          <p class="muted">Descobre cores, estilos e layouts.</p>
-          <button class="secondary" data-lesson="css">Abrir aula</button>
-        </article>
-        <article class="card">
-          <div class="iconbox">⚡</div>
-          <h3>JavaScript</h3>
-          <p class="muted">Dá vida aos teus projetos com interação.</p>
-          <button class="secondary" data-lesson="js">Abrir aula</button>
-        </article>
-      </div>
-    </section>
-  </section>
+<section class="section">
+<div class="sectionhead"><h2>Começa por aqui</h2><span class="muted">Para iniciantes</span></div>
+<div class="grid">
+<article class="card"><div class="iconbox">🌐</div><h3>HTML</h3><p class="muted">Cria a estrutura de páginas web.</p><button class="secondary" data-lesson="html">Abrir aula</button></article>
+<article class="card"><div class="iconbox">🎨</div><h3>CSS</h3><p class="muted">Descobre cores, estilos e layouts.</p><button class="secondary" data-lesson="css">Abrir aula</button></article>
+<article class="card"><div class="iconbox">⚡</div><h3>JavaScript</h3><p class="muted">Dá vida aos teus projetos.</p><button class="secondary" data-lesson="js">Abrir aula</button></article>
+</div>
+</section>
+</section>
 
-  <section id="aulas" class="section">
-    <div class="eyebrow">BIBLIOTECA DE CONHECIMENTO</div>
-    <h2>As tuas aulas</h2>
-    <p class="muted">Estuda ao teu ritmo. O progresso fica guardado neste navegador.</p>
-    <div id="lessonList" class="lessonlist"></div>
-  </section>
+<section id="aulas" class="section">
+<div class="eyebrow">BIBLIOTECA DE CONHECIMENTO</div><h2>As tuas aulas</h2>
+<p class="muted">Conclui uma aula para receber 10 pontos. O progresso fica guardado neste navegador.</p>
+<div id="lessonList" class="lessonlist"></div>
+</section>
 
-  <section id="lessonView" class="section hidden">
-    <button class="secondary" id="backLessons">← Voltar às aulas</button>
-    <article class="card">
-      <span class="tag" id="lessonCategory">AULA</span>
-      <h2 id="lessonTitle"></h2>
-      <div id="lessonContent"></div>
-      <div class="actions">
-        <button class="primary" id="completeLesson">Marcar como concluída ✓</button>
-      </div>
-      <p class="toast" id="lessonMessage" aria-live="polite"></p>
-    </article>
-  </section>
+<section id="lessonView" class="section hidden">
+<button class="secondary" id="backLessons">← Voltar</button>
+<article class="card"><span class="tag" id="lessonCategory">AULA</span><h2 id="lessonTitle"></h2><div id="lessonContent"></div>
+<div class="actions"><button class="primary" id="completeLesson">Marcar como concluída ✓</button></div>
+<p class="toast" id="lessonMessage" aria-live="polite"></p></article>
+</section>
 
-  <section id="praticas" class="section">
-    <div class="eyebrow">LABORATÓRIO INTERATIVO</div>
-    <h2>Área de práticas</h2>
-    <p class="muted">Escolhe a resposta correta. Recebes feedback imediato e pontos pelas respostas certas.</p>
-    <div class="card">
-      <span class="tag" id="quizCounter">EXERCÍCIO</span>
-      <h3 id="quizQuestion"></h3>
-      <div id="quizAnswers"></div>
-      <p id="quizFeedback" class="toast" aria-live="polite"></p>
-      <button id="nextQuestion" class="primary">Próximo exercício →</button>
-    </div>
+<section id="praticas" class="section">
+<div class="eyebrow">LABORATÓRIO INTERATIVO</div><h2>Área de práticas</h2>
+<p class="muted">Acerta nas perguntas para ganhar 5 pontos por resposta correta, uma vez por pergunta.</p>
+<div class="card"><span class="tag" id="quizCounter">EXERCÍCIO</span><h3 id="quizQuestion"></h3><div id="quizAnswers"></div><p id="quizFeedback" class="toast" aria-live="polite"></p><button id="nextQuestion" class="primary">Próximo exercício →</button></div>
+<div class="section"><h2>Experimenta código</h2><p class="muted">Escreve uma mensagem e vê o resultado.</p>
+<div class="field"><label for="practiceText">A tua mensagem</label><input id="practiceText" maxlength="120" placeholder="Olá, mundo!"></div>
+<button id="runPractice" class="primary">Executar exemplo</button><div class="codepreview" id="practiceOutput">O resultado aparecerá aqui.</div>
+<p class="muted">Este exercício apresenta texto. Não executa código arbitrário.</p></div>
+</section>
 
-    <div class="section">
-      <h2>Experimenta código</h2>
-      <p class="muted">Escreve uma mensagem e vê como o JavaScript a apresenta.</p>
-      <div class="field">
-        <label for="practiceText">A tua mensagem</label>
-        <input id="practiceText" maxlength="120" placeholder="Olá, mundo!">
-      </div>
-      <button id="runPractice" class="primary">Executar exemplo</button>
-      <div class="codepreview" id="practiceOutput">O resultado aparecerá aqui.</div>
-      <p class="muted">Este exercício demonstra texto dinâmico. Não executa código arbitrário.</p>
-    </div>
-  </section>
+<section id="tarefas" class="section">
+<div class="eyebrow">DESAFIOS RELÂMPAGO</div><h2>Tarefas a cada 30 minutos ⏰</h2>
+<p class="muted">Completa desafios para ganhar pontos. As tarefas mudam a cada meia hora.</p>
+<div class="card">
+<p class="muted">Próxima renovação em:</p><div id="taskTimer" class="tasktimer">30:00</div>
+<div id="taskList" class="grid" style="margin-top:18px"></div>
+<p class="muted">As tarefas e recompensas são guardadas neste navegador. O relógio segue a hora do dispositivo.</p>
+</div>
+</section>
 
-  <section id="perfil" class="section">
-    <div class="eyebrow">A TUA JORNADA</div>
-    <h2>Perfil e progresso</h2>
-    <div class="card">
-      <div class="iconbox">🌙</div>
-      <h3 id="profileName">Visitante</h3>
-      <p id="profileEmail" class="muted">Ainda não iniciaste sessão.</p>
-      <div class="grid two">
-        <div>
-          <p class="muted">Pontos acumulados</p>
-          <div class="stat" id="profilePoints">0</div>
-        </div>
-        <div>
-          <p class="muted">Aulas completas</p>
-          <div class="stat" id="profileLessons">0</div>
-        </div>
-      </div>
-      <div class="progress"><span id="profileBar"></span></div>
-      <p class="muted" id="profileProgressText">Começa a tua primeira aula!</p>
-      <div class="actions">
-        <button class="primary" id="profileAccount">Entrar / Criar conta</button>
-        <button class="secondary" id="exportProgress">Exportar progresso</button>
-        <button class="danger" id="resetProgress">Apagar progresso local</button>
-      </div>
-      <p id="profileMessage" class="toast" aria-live="polite"></p>
-    </div>
-    <div class="notice" style="margin-top:15px">
-      Esta versão guarda os dados no armazenamento local do navegador.
-      Não utilizes uma senha real ou repetida de outras contas.
-      O login local não é adequado para proteger informações pessoais.
-    </div>
-  </section>
+<section id="vip" class="section">
+<div class="eyebrow">CONHECIMENTO EXCLUSIVO</div><h2>Área VIP ✨</h2>
+<p class="muted">Atinge 150 pontos para desbloquear aulas avançadas de programação.</p>
+<div id="vipLocked" class="viplock">
+<div style="font-size:42px">🔒</div><h3>A Área VIP está bloqueada</h3>
+<p>Precisas de 150 pontos para entrar.</p><div class="progress"><span id="vipBar"></span></div>
+<p id="vipPointsText" class="muted">0 / 150 pontos</p>
+<button class="primary" data-go="tarefas">Ganhar pontos →</button>
+</div>
+<div id="vipUnlocked" class="hidden">
+<div class="notice"><strong>🔓 Área VIP desbloqueada!</strong> As aulas avançadas estão disponíveis para ti.</div>
+<div id="vipLessonList" class="lessonlist" style="margin-top:15px"></div>
+</div>
+</section>
 
-  <section id="login" class="section hidden">
-    <div class="card formbox">
-      <button id="closeLogin" class="secondary">← Voltar</button>
-      <div class="eyebrow" style="margin-top:18px">A TUA CONTA</div>
-      <h2 id="authTitle">Entrar no Angel LuaLab</h2>
-      <p class="muted">Cria um perfil local para acompanhar as tuas aulas neste navegador.</p>
-      <form id="authForm">
-        <div class="field" id="nameField">
-          <label for="authName">Nome de utilizador</label>
-          <input id="authName" maxlength="30" autocomplete="nickname" placeholder="O teu nome">
-        </div>
-        <div class="field">
-          <label for="authEmail">E-mail (identificador local)</label>
-          <input id="authEmail" type="email" required maxlength="120" autocomplete="email" placeholder="exemplo@email.com">
-        </div>
-        <div class="field">
-          <label for="authPassword">Senha local</label>
-          <input id="authPassword" type="password" required minlength="4" maxlength="100" autocomplete="off" placeholder="Cria uma senha apenas para este teste">
-        </div>
-        <button class="primary" type="submit" id="submitAuth">Criar perfil</button>
-      </form>
-      <button class="secondary" id="switchAuth">Já tenho perfil local</button>
-      <p class="toast" id="authMessage" aria-live="polite"></p>
-      <p class="muted">Aviso: o perfil e a senha ficam neste navegador. Não são contas reais na internet.</p>
-    </div>
-  </section>
+<section id="perfil" class="section">
+<div class="eyebrow">A TUA JORNADA</div><h2>Perfil e progresso</h2>
+<div class="card"><div class="iconbox">🌙</div><h3 id="profileName">Visitante</h3><p id="profileEmail" class="muted">Ainda não iniciaste sessão.</p>
+<div class="grid two"><div><p class="muted">Pontos acumulados</p><div class="stat" id="profilePoints">0</div></div><div><p class="muted">Aulas completas</p><div class="stat" id="profileLessons">0</div></div></div>
+<div class="progress"><span id="profileBar"></span></div><p class="muted" id="profileProgressText">Começa a tua primeira aula!</p>
+<div class="actions"><button class="primary" id="profileAccount">Entrar / Criar conta</button><button class="secondary" id="exportProgress">Exportar progresso</button><button class="danger" id="resetProgress">Apagar progresso local</button></div>
+<p id="profileMessage" class="toast" aria-live="polite"></p></div>
+<div class="notice" style="margin-top:15px">Esta é uma demonstração local. Contas e pontos não são sincronizados entre dispositivos e não são protegidos por um servidor. Não utilizes uma senha real ou repetida.</div>
+</section>
 
-  <footer>
-    <div class="brand">☾ ANGEL <span>LUALAB</span></div>
-    <p class="muted">Criado em 15/10/2026 · Academia Digital</p>
-    <p class="muted">Aprende, pratica e cria com responsabilidade. ✦</p>
-  </footer>
+<section id="login" class="section hidden">
+<div class="card" style="max-width:480px;margin:30px auto">
+<button id="closeLogin" class="secondary">← Voltar</button><div class="eyebrow" style="margin-top:18px">A TUA CONTA</div>
+<h2 id="authTitle">Entrar no Angel LuaLab</h2><p class="muted">Cria um perfil local para acompanhar as tuas aulas.</p>
+<form id="authForm">
+<div class="field" id="nameField"><label for="authName">Nome de utilizador</label><input id="authName" maxlength="30" autocomplete="nickname" placeholder="O teu nome"></div>
+<div class="field"><label for="authEmail">E-mail (identificador local)</label><input id="authEmail" type="email" required maxlength="120" autocomplete="email" placeholder="exemplo@email.com"></div>
+<div class="field"><label for="authPassword">Senha local</label><input id="authPassword" type="password" required minlength="4" maxlength="100" autocomplete="off" placeholder="Senha apenas para este teste"></div>
+<button class="primary" type="submit" id="submitAuth">Criar perfil</button>
+</form>
+<button class="secondary" id="switchAuth">Já tenho perfil local</button><p class="toast" id="authMessage" aria-live="polite"></p>
+<p class="muted">Aviso: o perfil e a senha ficam neste navegador. Não são contas reais na internet.</p>
+</div>
+</section>
+
+<footer><div class="brand">☾ ANGEL <span>LUALAB</span></div><p class="muted">Criado em 15/10/2026 · Academia Digital</p><p class="muted">Aprende, pratica e cria com responsabilidade. ✦</p></footer>
 </div>
 
 <script>
-const lessons = [
- {id:"html",category:"HTML",title:"Aula 1 — A estrutura de uma página",level:"Iniciante",minutes:5,
- content:`<p>HTML significa <strong>HyperText Markup Language</strong>. É usado para organizar o conteúdo de uma página web.</p>
- <h3>Exemplo de estrutura</h3>
- <div class="codepreview">&lt;h1&gt;Olá, mundo!&lt;/h1&gt;\n&lt;p&gt;Esta é a minha página.&lt;/p&gt;</div>
- <p><code>&lt;h1&gt;</code> representa um título principal e <code>&lt;p&gt;</code> representa um parágrafo.</p>
- <p><strong>Desafio:</strong> identifica qual etiqueta é utilizada para um parágrafo: <code>&lt;p&gt;</code>.</p>`},
- {id:"css",category:"CSS",title:"Aula 2 — Cores e estilos",level:"Iniciante",minutes:6,
- content:`<p>CSS significa <strong>Cascading Style Sheets</strong>. Serve para definir a aparência de páginas HTML.</p>
- <div class="codepreview">h1 {\n  color: purple;\n  font-size: 32px;\n}</div>
- <p><code>color</code> muda a cor do texto. <code>font-size</code> muda o tamanho da letra.</p>
- <p>Podes experimentar cores, margens, fundos e bordas para criar o teu próprio visual.</p>`},
- {id:"js",category:"JavaScript",title:"Aula 3 — Interatividade",level:"Iniciante",minutes:7,
- content:`<p>JavaScript permite adicionar comportamentos a páginas web, como botões interativos e mensagens.</p>
- <div class="codepreview">const mensagem = "Olá!";\nconsole.log(mensagem);</div>
- <p><code>const</code> cria uma variável que não pode ser reatribuída. <code>console.log()</code> escreve uma mensagem na consola.</p>
- <p>O exemplo interativo da área de práticas usa JavaScript para apresentar o texto que escreveres.</p>`},
- {id:"privacy",category:"Segurança",title:"Aula 4 — Privacidade na internet",level:"Iniciante",minutes:5,
- content:`<p>A privacidade digital é o cuidado com os dados que partilhas e com as permissões que concedes.</p>
- <h3>Boas práticas</h3>
- <ul><li>Usa senhas diferentes em serviços importantes.</li><li>Ativa a autenticação de dois fatores quando disponível.</li><li>Desconfia de mensagens que pedem dados pessoais.</li><li>Revê as permissões das aplicações.</li></ul>
- <p>Um endereço IP pode indicar uma localização aproximada, mas não revela automaticamente o endereço exato da tua casa.</p>`},
- {id:"networks",category:"Redes",title:"Aula 5 — IP público e privado",level:"Iniciante",minutes:6,
- content:`<p>Um endereço IP ajuda a encaminhar dados numa rede.</p>
- <p><strong>IP público:</strong> associado à ligação usada para aceder à internet.</p>
- <p><strong>IP privado:</strong> utilizado na comunicação dentro de uma rede local, como o Wi-Fi de casa.</p>
- <p>Os endereços IP, por si só, não são uma forma garantida de identificar uma pessoa.</p>`},
- {id:"web",category:"Web",title:"Aula 6 — Como funciona um site",level:"Iniciante",minutes:5,
- content:`<p>Um site é composto por recursos que o navegador carrega para apresentar uma página.</p>
- <ul><li><strong>HTML:</strong> estrutura.</li><li><strong>CSS:</strong> aparência.</li><li><strong>JavaScript:</strong> interatividade.</li><li><strong>Servidor:</strong> entrega os ficheiros e pode processar dados.</li></ul>
- <p>O GitHub Pages publica ficheiros estáticos. Para contas reais e dados sincronizados, é necessário um serviço de backend.</p>`}
+const lessons=[
+{id:"html",category:"HTML",title:"Aula 1 — A estrutura de uma página",level:"Iniciante",minutes:5,content:`<p>HTML significa <strong>HyperText Markup Language</strong>. É usado para organizar o conteúdo de uma página web.</p><h3>Exemplo</h3><div class="codepreview">&lt;h1&gt;Olá, mundo!&lt;/h1&gt;\n&lt;p&gt;Esta é a minha página.&lt;/p&gt;</div><p><code>&lt;h1&gt;</code> é um título e <code>&lt;p&gt;</code> é um parágrafo.</p>`},
+{id:"css",category:"CSS",title:"Aula 2 — Cores e estilos",level:"Iniciante",minutes:6,content:`<p>CSS significa <strong>Cascading Style Sheets</strong>. Controla a aparência das páginas web.</p><div class="codepreview">h1 {\n color: purple;\n font-size: 32px;\n}</div><p><code>color</code> muda a cor e <code>font-size</code> muda o tamanho da letra.</p>`},
+{id:"js",category:"JavaScript",title:"Aula 3 — Interatividade",level:"Iniciante",minutes:7,content:`<p>JavaScript adiciona comportamentos a páginas web.</p><div class="codepreview">const mensagem = "Olá!";\nconsole.log(mensagem);</div><p><code>const</code> declara uma variável e <code>console.log()</code> apresenta uma mensagem na consola.</p>`},
+{id:"privacy",category:"Segurança",title:"Aula 4 — Privacidade na internet",level:"Iniciante",minutes:5,content:`<p>A privacidade digital é o cuidado com os dados que partilhas.</p><ul><li>Usa senhas diferentes em serviços importantes.</li><li>Ativa a autenticação de dois fatores.</li><li>Desconfia de mensagens que pedem dados pessoais.</li><li>Revê as permissões das aplicações.</li></ul><p>Um IP não revela automaticamente o endereço exato da tua casa.</p>`},
+{id:"networks",category:"Redes",title:"Aula 5 — IP público e privado",level:"Iniciante",minutes:6,content:`<p>Um endereço IP ajuda a encaminhar dados numa rede.</p><p><strong>IP público:</strong> associado à ligação usada para aceder à internet.</p><p><strong>IP privado:</strong> utilizado dentro de uma rede local, como o Wi-Fi de casa.</p>`},
+{id:"web",category:"Web",title:"Aula 6 — Como funciona um site",level:"Iniciante",minutes:5,content:`<p>Um site contém recursos que o navegador carrega para mostrar uma página.</p><ul><li><strong>HTML:</strong> estrutura.</li><li><strong>CSS:</strong> aparência.</li><li><strong>JavaScript:</strong> interatividade.</li><li><strong>Servidor:</strong> entrega ficheiros e pode processar dados.</li></ul><p>Para contas reais e dados sincronizados, é necessário um backend.</p>`}
 ];
 
-const questions = [
- {q:"Qual linguagem organiza a estrutura de uma página web?",a:["HTML","CSS","Excel"],correct:0,why:"HTML define a estrutura do conteúdo."},
- {q:"Para que serve principalmente o CSS?",a:["Guardar senhas","Estilizar uma página","Criar endereços IP"],correct:1,why:"CSS controla cores, tamanhos, espaçamentos e layout."},
- {q:"O que o JavaScript pode fazer numa página?",a:["Adicionar interatividade","Substituir toda a internet","Garantir anonimato total"],correct:0,why:"JavaScript pode responder a ações e atualizar o conteúdo."},
- {q:"Um IP público revela sempre a morada exata?",a:["Sim, sempre","Não, não necessariamente","Revela sempre o nome"],correct:1,why:"A localização obtida por IP costuma ser aproximada."},
- {q:"Onde fica guardado o progresso desta versão?",a:["Em todos os computadores","Num servidor central","No navegador local"],correct:2,why:"Esta versão utiliza o armazenamento local do navegador."},
- {q:"Qual é uma boa prática de segurança?",a:["Reutilizar todas as senhas","Partilhar códigos de acesso","Ativar autenticação de dois fatores"],correct:2,why:"A autenticação adicional pode ajudar a proteger as contas."}
+const vipLessons=[
+{id:"vip-dom",category:"VIP • JavaScript",title:"VIP 1 — DOM: controlar a página",minutes:8,content:`<p>O DOM é a representação da página que o JavaScript pode consultar e alterar.</p><div class="codepreview">document.querySelector("h1").textContent = "Novo título";</div><p><code>querySelector()</code> seleciona um elemento e <code>textContent</code> altera o seu texto.</p><h3>Experimenta</h3><p>Abre as ferramentas de desenvolvimento de um projeto de teste e experimenta selecionar elementos. Não precisas de executar código desconhecido.</p>`},
+{id:"vip-flex",category:"VIP • CSS",title:"VIP 2 — Flexbox e layouts",minutes:8,content:`<p>Flexbox ajuda a organizar elementos em linhas ou colunas.</p><div class="codepreview">.container {\n display: flex;\n gap: 16px;\n justify-content: center;\n align-items: center;\n}</div><p><code>justify-content</code> distribui elementos no eixo principal. <code>align-items</code> alinha-os no eixo cruzado.</p>`},
+{id:"vip-functions",category:"VIP • JavaScript",title:"VIP 3 — Funções e parâmetros",minutes:10,content:`<p>Uma função agrupa instruções que podes reutilizar.</p><div class="codepreview">function saudacao(nome) {\n return "Olá, " + nome + "!";\n}\n\nsaudacao("Neimar");</div><p><code>nome</code> é um parâmetro. <code>return</code> devolve o resultado da função.</p>`},
+{id:"vip-grid",category:"VIP • CSS",title:"VIP 4 — Criar grelhas com CSS Grid",minutes:9,content:`<p>CSS Grid organiza cartões em linhas e colunas.</p><div class="codepreview">.grelha {\n display: grid;\n grid-template-columns: repeat(3, 1fr);\n gap: 15px;\n}</div><p>Para ecrãs pequenos, podes usar uma media query para reduzir o número de colunas.</p>`}
+];
+
+const questions=[
+{q:"Qual linguagem organiza a estrutura de uma página web?",a:["HTML","CSS","Excel"],correct:0,why:"HTML define a estrutura do conteúdo."},
+{q:"Para que serve principalmente o CSS?",a:["Guardar senhas","Estilizar uma página","Criar endereços IP"],correct:1,why:"CSS controla cores, tamanhos e layout."},
+{q:"O que o JavaScript pode fazer numa página?",a:["Adicionar interatividade","Substituir toda a internet","Garantir anonimato total"],correct:0,why:"JavaScript pode responder a ações e atualizar conteúdo."},
+{q:"Um IP público revela sempre a morada exata?",a:["Sim, sempre","Não, não necessariamente","Revela sempre o nome"],correct:1,why:"A localização obtida por IP costuma ser aproximada."},
+{q:"Onde fica guardado o progresso desta versão?",a:["Em todos os computadores","Num servidor central","No navegador local"],correct:2,why:"Esta versão utiliza o armazenamento local."},
+{q:"Qual é uma boa prática de segurança?",a:["Reutilizar todas as senhas","Partilhar códigos","Ativar autenticação de dois fatores"],correct:2,why:"A autenticação adicional ajuda a proteger contas."}
+];
+
+const taskSets=[
+[
+{id:"read-html",title:"Revisão HTML",desc:"Abre e lê uma aula de HTML.",reward:10,lesson:"html"},
+{id:"read-security",title:"Guardiã digital",desc:"Lê a aula sobre privacidade.",reward:15,lesson:"privacy"},
+{id:"quiz-practice",title:"Mente curiosa",desc:"Responde corretamente a uma pergunta.",reward:10,quiz:true}
+],
+[
+{id:"read-css",title:"Artista de CSS",desc:"Estuda a aula de CSS.",reward:10,lesson:"css"},
+{id:"read-web",title:"Explorador da web",desc:"Lê como funciona um site.",reward:15,lesson:"web"},
+{id:"read-js",title:"Primeiro passo em JS",desc:"Estuda a aula de JavaScript.",reward:10,lesson:"js"}
+],
+[
+{id:"read-networks",title:"Detetive de redes",desc:"Lê a aula de endereços IP.",reward:15,lesson:"networks"},
+{id:"two-lessons",title:"Maratona de estudo",desc:"Conclui duas aulas básicas.",reward:20,twoLessons:true},
+{id:"practice-message",title:"Mensagem dinâmica",desc:"Executa o exemplo na área de práticas.",reward:10,practice:true}
+]
 ];
 
 const STORE="angelLuaLabPlatformV1";
-let state=loadState();
-let authMode="register";
-let currentLesson=null;
-let quizIndex=0;
-let answered=false;
+const BONUS=10000000;
+const VIP_COST=150;
+const TASK_WINDOW=30*60*1000;
+let state=loadState(),authMode="register",currentLesson=null,quizIndex=0,answered=false;
 
-function freshState(){
- return {user:null,completed:[],points:0,correct:0,answered:[],accounts:{},guestCompleted:[],guestPoints:0,guestCorrect:0,guestAnswered:[]};
-}
-function loadState(){
- try{
-  const parsed=JSON.parse(localStorage.getItem(STORE));
-  if(parsed&&typeof parsed==="object")return {...freshState(),...parsed};
- }catch(e){}
- return freshState();
-}
-function saveState(){
- try{
-  localStorage.setItem(STORE,JSON.stringify(state));
-  return true;
- }catch(e){
-  document.getElementById("profileMessage").textContent="Não foi possível guardar. Verifica o espaço disponível no navegador.";
-  return false;
- }
-}
-function progress(){
- if(state.user){
-  const u=state.accounts[state.user];
-  if(u)return u;
- }
- return {completed:state.guestCompleted,points:state.guestPoints,correct:state.guestCorrect,answered:state.guestAnswered};
-}
-function setProgress(p){
- if(state.user&&state.accounts[state.user])state.accounts[state.user]=p;
- else{
-  state.guestCompleted=p.completed;
-  state.guestPoints=p.points;
-  state.guestCorrect=p.correct;
-  state.guestAnswered=p.answered;
- }
-}
+function freshState(){return{user:null,completed:[],points:0,correct:0,answered:[],accounts:{},guestCompleted:[],guestPoints:0,guestCorrect:0,guestAnswered:[],guestTasks:{}}}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STORE));if(s&&typeof s==="object")return{...freshState(),...s,accounts:s.accounts||{}}}catch(e){}return freshState()}
+function saveState(){try{localStorage.setItem(STORE,JSON.stringify(state));return true}catch(e){const el=document.getElementById("profileMessage");if(el)el.textContent="Não foi possível guardar. Verifica o espaço disponível no navegador.";return false}}
+function progress(){if(state.user&&state.accounts[state.user])return state.accounts[state.user];return{completed:state.guestCompleted,points:state.guestPoints,correct:state.guestCorrect,answered:state.guestAnswered,tasks:state.guestTasks||{}}}
+function setProgress(p){if(state.user&&state.accounts[state.user])state.accounts[state.user]=p;else{state.guestCompleted=p.completed||[];state.guestPoints=p.points||0;state.guestCorrect=p.correct||0;state.guestAnswered=p.answered||[];state.guestTasks=p.tasks||{}}}
+function ensureFields(p){p.completed=p.completed||[];p.points=Number(p.points)||0;p.correct=Number(p.correct)||0;p.answered=p.answered||[];p.tasks=p.tasks||{};return p}
+function giveNeimarBonus(account){if(account&&(account.name||"").trim().toLowerCase()==="neimar"&&!account.neimarBonusGiven){account.points=(Number(account.points)||0)+BONUS;account.neimarBonusGiven=true;return true}return false}
+function applyLoggedInBonus(){if(state.user&&state.accounts[state.user]){const u=ensureFields(state.accounts[state.user]);if(giveNeimarBonus(u)){state.accounts[state.user]=u;saveState()}}}
+function getAllLessons(){return lessons.concat(vipLessons)}
 function refreshUI(){
- const p=progress();
- const completed=p.completed||[];
- const points=p.points||0;
- const correct=p.correct||0;
- document.getElementById("statLessons").textContent=completed.length;
- document.getElementById("statPoints").textContent=points;
- document.getElementById("statQuiz").textContent=correct;
- document.getElementById("lessonBar").style.width=(completed.length/lessons.length*100)+"%";
- document.getElementById("welcomeTag").textContent=state.user?(state.accounts[state.user].name||state.user):"VISITANTE";
- document.getElementById("accountBtn").textContent=state.user?"Sair":"Entrar";
- document.getElementById("profileName").textContent=state.user?(state.accounts[state.user].name||state.user):"Visitante";
- document.getElementById("profileEmail").textContent=state.user||"Ainda não iniciaste sessão.";
- document.getElementById("profilePoints").textContent=points;
- document.getElementById("profileLessons").textContent=completed.length;
- document.getElementById("profileBar").style.width=(completed.length/lessons.length*100)+"%";
- document.getElementById("profileProgressText").textContent=completed.length===lessons.length?"Parabéns! Concluíste todas as aulas disponíveis.":`Concluíste ${completed.length} de ${lessons.length} aulas.`;
- renderLessons();
+applyLoggedInBonus();
+const p=ensureFields(progress()),completed=p.completed,points=p.points;
+document.getElementById("statLessons").textContent=completed.length;
+document.getElementById("statPoints").textContent=points.toLocaleString("pt-BR");
+document.getElementById("statQuiz").textContent=p.correct;
+document.getElementById("lessonBar").style.width=(completed.length/getAllLessons().length*100)+"%";
+document.getElementById("welcomeTag").textContent=state.user?(state.accounts[state.user].name||state.user):"VISITANTE";
+document.getElementById("accountBtn").textContent=state.user?"Sair":"Entrar";
+document.getElementById("profileName").textContent=state.user?(state.accounts[state.user].name||state.user):"Visitante";
+document.getElementById("profileEmail").textContent=state.user||"Ainda não iniciaste sessão.";
+document.getElementById("profilePoints").textContent=points.toLocaleString("pt-BR");
+document.getElementById("profileLessons").textContent=completed.length;
+document.getElementById("profileBar").style.width=(completed.length/getAllLessons().length*100)+"%";
+document.getElementById("profileProgressText").textContent=completed.length===getAllLessons().length?"Parabéns! Concluíste todas as aulas!":`Concluíste ${completed.length} de ${getAllLessons().length} aulas.`;
+const unlocked=points>=VIP_COST;
+document.getElementById("vipLocked").classList.toggle("hidden",unlocked);
+document.getElementById("vipUnlocked").classList.toggle("hidden",!unlocked);
+document.getElementById("vipBar").style.width=Math.min(100,points/VIP_COST*100)+"%";
+document.getElementById("vipPointsText").textContent=`${points.toLocaleString("pt-BR")} / ${VIP_COST} pontos`;
+renderLessons();renderVipLessons();renderTasks();
 }
 function renderLessons(){
- const list=document.getElementById("lessonList");
- list.replaceChildren();
- const p=progress();
- lessons.forEach((l,i)=>{
-  const row=document.createElement("article");
-  row.className="lessonrow";
-  const icon=document.createElement("div");
-  icon.className="iconbox";
-  icon.textContent=["🌐","🎨","⚡","🛡️","🔗","🧩"][i];
-  const grow=document.createElement("div");
-  grow.className="grow";
-  const title=document.createElement("h3");
-  title.textContent=l.title;
-  const desc=document.createElement("p");
-  desc.className="muted";
-  desc.textContent=`${l.category} · ${l.level} · ${l.minutes} min`;
-  grow.append(title,desc);
-  const btn=document.createElement("button");
-  btn.className="secondary";
-  btn.textContent=(p.completed||[]).includes(l.id)?"Rever ✓":"Estudar";
-  btn.addEventListener("click",()=>openLesson(l.id));
-  row.append(icon,grow,btn);
-  list.append(row);
- });
+const list=document.getElementById("lessonList");list.replaceChildren();const p=ensureFields(progress());
+lessons.forEach((l,i)=>{const row=document.createElement("article");row.className="lessonrow";const icon=document.createElement("div");icon.className="iconbox";icon.textContent=["🌐","🎨","⚡","🛡️","🔗","🧩"][i];const grow=document.createElement("div");grow.className="grow";const title=document.createElement("h3");title.textContent=l.title;const desc=document.createElement("p");desc.className="muted";desc.textContent=`${l.category} · ${l.level} · ${l.minutes} min`;grow.append(title,desc);const btn=document.createElement("button");btn.className="secondary";btn.textContent=p.completed.includes(l.id)?"Rever ✓":"Estudar";btn.addEventListener("click",()=>openLesson(l.id));row.append(icon,grow,btn);list.append(row)})
+}
+function renderVipLessons(){
+const list=document.getElementById("vipLessonList");list.replaceChildren();const p=ensureFields(progress());
+vipLessons.forEach(l=>{const row=document.createElement("article");row.className="lessonrow";const icon=document.createElement("div");icon.className="iconbox";icon.textContent="✨";const grow=document.createElement("div");grow.className="grow";const title=document.createElement("h3");title.textContent=l.title;const desc=document.createElement("p");desc.className="muted";desc.textContent=`${l.category} · Avançado · ${l.minutes} min`;grow.append(title,desc);const btn=document.createElement("button");btn.className="secondary";btn.textContent=p.completed.includes(l.id)?"Rever ✓":"Estudar";btn.addEventListener("click",()=>openLesson(l.id));row.append(icon,grow,btn);list.append(row)})
 }
 function openLesson(id){
- currentLesson=lessons.find(l=>l.id===id);
- if(!currentLesson)return;
- document.getElementById("lessonCategory").textContent=currentLesson.category;
- document.getElementById("lessonTitle").textContent=currentLesson.title;
- document.getElementById("lessonContent").innerHTML=currentLesson.content;
- const done=(progress().completed||[]).includes(id);
- document.getElementById("completeLesson").textContent=done?"Concluída ✓":"Marcar como concluída ✓";
- document.getElementById("lessonMessage").textContent=done?"Já concluíste esta aula. Podes revê-la quando quiseres.":"";
- document.getElementById("lessonView").classList.remove("hidden");
- document.getElementById("lessonView").scrollIntoView({behavior:"smooth"});
+const p=ensureFields(progress()),isVip=vipLessons.some(l=>l.id===id);
+if(isVip&&p.points<VIP_COST){document.getElementById("vip").scrollIntoView({behavior:"smooth"});return}
+currentLesson=getAllLessons().find(l=>l.id===id);if(!currentLesson)return;
+document.getElementById("lessonCategory").textContent=currentLesson.category;
+document.getElementById("lessonTitle").textContent=currentLesson.title;
+document.getElementById("lessonContent").innerHTML=currentLesson.content;
+const done=p.completed.includes(id);document.getElementById("completeLesson").textContent=done?"Concluída ✓":"Marcar como concluída ✓";
+document.getElementById("lessonMessage").textContent=done?"Já concluíste esta aula. Podes revê-la quando quiseres.":"";
+document.getElementById("lessonView").classList.remove("hidden");document.getElementById("lessonView").scrollIntoView({behavior:"smooth"})
 }
 document.getElementById("completeLesson").addEventListener("click",()=>{
- if(!currentLesson)return;
- const p=progress();
- p.completed=p.completed||[];
- if(!p.completed.includes(currentLesson.id)){
-  p.completed.push(currentLesson.id);
-  p.points=(p.points||0)+10;
-  setProgress(p);
-  saveState();
-  refreshUI();
-  document.getElementById("lessonMessage").textContent="Aula concluída! +10 pontos ✨";
-  document.getElementById("completeLesson").textContent="Concluída ✓";
- }else{
-  document.getElementById("lessonMessage").textContent="Esta aula já está concluída.";
- }
+if(!currentLesson)return;const p=ensureFields(progress());
+if(!p.completed.includes(currentLesson.id)){p.completed.push(currentLesson.id);p.points+=vipLessons.some(l=>l.id===currentLesson.id)?15:10;setProgress(p);saveState();refreshUI();document.getElementById("lessonMessage").textContent=vipLessons.some(l=>l.id===currentLesson.id)?"Aula VIP concluída! +15 pontos ✨":"Aula concluída! +10 pontos ✨";document.getElementById("completeLesson").textContent="Concluída ✓"}
+else document.getElementById("lessonMessage").textContent="Esta aula já está concluída."
 });
-document.getElementById("backLessons").addEventListener("click",()=>{
- document.getElementById("lessonView").classList.add("hidden");
- document.getElementById("aulas").scrollIntoView({behavior:"smooth"});
-});
-document.querySelectorAll("[data-go]").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  const id=btn.dataset.go;
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
- });
-});
-document.querySelectorAll("[data-lesson]").forEach(btn=>{
- btn.addEventListener("click",()=>openLesson(btn.dataset.lesson));
-});
+document.getElementById("backLessons").addEventListener("click",()=>{document.getElementById("lessonView").classList.add("hidden");document.getElementById("aulas").scrollIntoView({behavior:"smooth"})});
+document.querySelectorAll("[data-go]").forEach(btn=>btn.addEventListener("click",()=>document.getElementById(btn.dataset.go).scrollIntoView({behavior:"smooth"})));
+document.querySelectorAll("[data-lesson]").forEach(btn=>btn.addEventListener("click",()=>openLesson(btn.dataset.lesson)));
 
 function renderQuestion(){
- const q=questions[quizIndex];
- answered=false;
- document.getElementById("quizCounter").textContent=`EXERCÍCIO ${quizIndex+1} DE ${questions.length}`;
- document.getElementById("quizQuestion").textContent=q.q;
- document.getElementById("quizFeedback").textContent="";
- const box=document.getElementById("quizAnswers");
- box.replaceChildren();
- q.a.forEach((answer,i)=>{
-  const b=document.createElement("button");
-  b.className="answer";
-  b.textContent=answer;
-  b.addEventListener("click",()=>answerQuestion(i,b));
-  box.append(b);
- });
- document.getElementById("nextQuestion").textContent="Próximo exercício →";
+const q=questions[quizIndex];answered=false;document.getElementById("quizCounter").textContent=`EXERCÍCIO ${quizIndex+1} DE ${questions.length}`;document.getElementById("quizQuestion").textContent=q.q;document.getElementById("quizFeedback").textContent="";
+const box=document.getElementById("quizAnswers");box.replaceChildren();
+q.a.forEach((answer,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=answer;b.addEventListener("click",()=>answerQuestion(i,b));box.append(b)});
+document.getElementById("nextQuestion").textContent="Próximo exercício →"
 }
 function answerQuestion(index,button){
- if(answered)return;
- answered=true;
- const q=questions[quizIndex];
- const p=progress();
- p.answered=p.answered||[];
- const questionKey=String(quizIndex);
- if(index===q.correct){
-  button.classList.add("correct");
-  if(!p.answered.includes(questionKey)){
-   p.answered.push(questionKey);
-   p.correct=(p.correct||0)+1;
-   p.points=(p.points||0)+5;
-   document.getElementById("quizFeedback").textContent="Correto! +5 pontos ✨ "+q.why;
-  }else{
-   document.getElementById("quizFeedback").textContent="Correto! Já recebeste os pontos desta pergunta. "+q.why;
-  }
- }else{
-  button.classList.add("wrong");
-  document.getElementById("quizFeedback").textContent="Ainda não! Resposta correta: "+q.a[q.correct]+". "+q.why;
- }
- document.querySelectorAll(".answer").forEach((b,i)=>{
-  if(i===q.correct)b.classList.add("correct");
-  b.disabled=true;
- });
- setProgress(p);
- saveState();
- refreshUI();
+if(answered)return;answered=true;const q=questions[quizIndex],p=ensureFields(progress()),key=String(quizIndex);
+if(index===q.correct){button.classList.add("correct");if(!p.answered.includes(key)){p.answered.push(key);p.correct++;p.points+=5;document.getElementById("quizFeedback").textContent="Correto! +5 pontos ✨ "+q.why}else document.getElementById("quizFeedback").textContent="Correto! Já recebeste os pontos desta pergunta. "+q.why}
+else{button.classList.add("wrong");document.getElementById("quizFeedback").textContent="Ainda não! Resposta correta: "+q.a[q.correct]+". "+q.why}
+document.querySelectorAll(".answer").forEach((b,i)=>{if(i===q.correct)b.classList.add("correct");b.disabled=true});
+setProgress(p);saveState();refreshUI()
 }
-document.getElementById("nextQuestion").addEventListener("click",()=>{
- quizIndex=(quizIndex+1)%questions.length;
- renderQuestion();
-});
-document.getElementById("runPractice").addEventListener("click",()=>{
- const value=document.getElementById("practiceText").value;
- document.getElementById("practiceOutput").textContent=value||"Olá, mundo!";
-});
+document.getElementById("nextQuestion").addEventListener("click",()=>{quizIndex=(quizIndex+1)%questions.length;renderQuestion()});
+document.getElementById("runPractice").addEventListener("click",()=>{const value=document.getElementById("practiceText").value;document.getElementById("practiceOutput").textContent=value||"Olá, mundo!";});
 
-function showLogin(){
- document.getElementById("login").classList.remove("hidden");
- document.getElementById("login").scrollIntoView({behavior:"smooth"});
- document.getElementById("authMessage").textContent="";
+function currentTaskBucket(){return Math.floor(Date.now()/TASK_WINDOW)}
+function getTasksForBucket(bucket){return taskSets[((bucket%taskSets.length)+taskSets.length)%taskSets.length]}
+function renderTasks(){
+const bucket=currentTaskBucket(),p=ensureFields(progress()),list=document.getElementById("taskList");list.replaceChildren();
+const claimed=p.tasks[String(bucket)]||[];
+getTasksForBucket(bucket).forEach(task=>{
+const card=document.createElement("article");card.className="card";
+const title=document.createElement("h3");title.textContent=task.title;
+const desc=document.createElement("p");desc.className="muted";desc.textContent=task.desc;
+const reward=document.createElement("p");reward.className="badge";reward.textContent=`✦ +${task.reward} pontos`;
+const btn=document.createElement("button");btn.className=claimed.includes(task.id)?"secondary":"primary";
+btn.textContent=claimed.includes(task.id)?"Concluída ✓":"Reclamar tarefa";
+btn.disabled=claimed.includes(task.id);
+btn.addEventListener("click",()=>{
+const now=ensureFields(progress());
+if(currentTaskBucket()!==bucket){renderTasks();return}
+const listForBucket=now.tasks[String(bucket)]||[];
+if(listForBucket.includes(task.id))return;
+let ok=false;
+if(task.lesson)ok=now.completed.includes(task.lesson);
+if(task.twoLessons)ok=now.completed.length>=2;
+if(task.quiz)ok=now.correct>=1;
+if(task.practice)ok=document.getElementById("practiceOutput").textContent!=="O resultado aparecerá aqui.";
+if(!ok){alert("Ainda não cumpriste o desafio! Faz a atividade indicada e tenta novamente.");return}
+listForBucket.push(task.id);now.tasks[String(bucket)]=listForBucket;now.points+=task.reward;
+const oldBuckets=Object.keys(now.tasks).map(Number).sort((a,b)=>b-a);
+oldBuckets.slice(5).forEach(k=>delete now.tasks[String(k)]);
+setProgress(now);saveState();refreshUI();document.getElementById("profileMessage").textContent=`Tarefa concluída: +${task.reward} pontos!`
+});
+card.append(title,desc,reward,btn);list.append(card)
+})
 }
-function hideLogin(){
- document.getElementById("login").classList.add("hidden");
+function updateTaskTimer(){
+const remaining=TASK_WINDOW-(Date.now()%TASK_WINDOW),seconds=Math.floor(remaining/1000);
+document.getElementById("taskTimer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
+if(remaining<=1000)renderTasks()
 }
+setInterval(updateTaskTimer,1000);
+
+function showLogin(){document.getElementById("login").classList.remove("hidden");document.getElementById("login").scrollIntoView({behavior:"smooth"});document.getElementById("authMessage").textContent=""}
+function hideLogin(){document.getElementById("login").classList.add("hidden")}
 function updateAuthMode(){
- document.getElementById("authTitle").textContent=authMode==="register"?"Criar perfil local":"Entrar no perfil local";
- document.getElementById("submitAuth").textContent=authMode==="register"?"Criar perfil":"Entrar";
- document.getElementById("switchAuth").textContent=authMode==="register"?"Já tenho perfil local":"Quero criar um perfil";
- document.getElementById("nameField").classList.toggle("hidden",authMode==="login");
- document.getElementById("authPassword").value="";
- document.getElementById("authMessage").textContent="";
+document.getElementById("authTitle").textContent=authMode==="register"?"Criar perfil local":"Entrar no perfil local";
+document.getElementById("submitAuth").textContent=authMode==="register"?"Criar perfil":"Entrar";
+document.getElementById("switchAuth").textContent=authMode==="register"?"Já tenho perfil local":"Quero criar um perfil";
+document.getElementById("nameField").classList.toggle("hidden",authMode==="login");
+document.getElementById("authPassword").value="";document.getElementById("authMessage").textContent=""
 }
 document.getElementById("accountBtn").addEventListener("click",()=>{
- if(state.user){
-  state.user=null;
-  saveState();
-  refreshUI();
-  document.getElementById("profileMessage").textContent="Sessão terminada. O teu progresso continua guardado neste navegador.";
- }else{
-  authMode="register";
-  updateAuthMode();
-  showLogin();
- }
+if(state.user){state.user=null;saveState();refreshUI();document.getElementById("profileMessage").textContent="Sessão terminada. O teu progresso continua guardado neste navegador."}
+else{authMode="register";updateAuthMode();showLogin()}
 });
 document.getElementById("profileAccount").addEventListener("click",()=>{
- if(state.user){
-  document.getElementById("profileMessage").textContent="A sessão está iniciada.";
- }else{
-  authMode="register";
-  updateAuthMode();
-  showLogin();
- }
+if(state.user)document.getElementById("profileMessage").textContent="A sessão está iniciada.";
+else{authMode="register";updateAuthMode();showLogin()}
 });
 document.getElementById("closeLogin").addEventListener("click",hideLogin);
-document.getElementById("switchAuth").addEventListener("click",()=>{
- authMode=authMode==="register"?"login":"register";
- updateAuthMode();
-});
+document.getElementById("switchAuth").addEventListener("click",()=>{authMode=authMode==="register"?"login":"register";updateAuthMode()});
+
 document.getElementById("authForm").addEventListener("submit",e=>{
- e.preventDefault();
- const email=document.getElementById("authEmail").value.trim().toLowerCase();
- const password=document.getElementById("authPassword").value;
- const name=document.getElementById("authName").value.trim()||"Estudante";
- const message=document.getElementById("authMessage");
- if(!email||password.length<4){
-  message.textContent="Preenche os campos. A senha de teste deve ter pelo menos 4 caracteres.";
-  return;
- }
- state.accounts=state.accounts||{};
- if(authMode==="register"){
-  if(state.accounts[email]){
-   message.textContent="Já existe um perfil local com esse e-mail. Escolhe entrar.";
-   return;
-  }
-  // Demonstração local: não usar uma senha real.
-  state.accounts[email]={
-   name:name,
-   password:password,
-   completed:state.guestCompleted||[],
-   points:state.guestPoints||0,
-   correct:state.guestCorrect||0,
-   answered:state.guestAnswered||[]
-  };
- }else{
-  const account=state.accounts[email];
-  if(!account||account.password!==password){
-   message.textContent="Perfil não encontrado ou senha incorreta neste navegador.";
-   return;
-  }
- }
- state.user=email;
- if(saveState()){
-  refreshUI();
-  message.textContent="Perfil aberto com sucesso!";
-  setTimeout(hideLogin,700);
- }
-});
-document.getElementById("exportProgress").addEventListener("click",()=>{
- const data={exportedAt:new Date().toISOString(),profile:state.user||"Visitante",progress:progress()};
- const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download="angel-lualab-progresso.json";
- a.click();URL.revokeObjectURL(url);
- document.getElementById("profileMessage").textContent="Exportação preparada.";
-});
-document.getElementById("resetProgress").addEventListener("click",()=>{
- if(!confirm("Apagar o progresso local? Esta ação não pode ser desfeita."))return;
- if(state.user){
-  const u=state.accounts[state.user];
-  if(u){u.completed=[];u.points=0;u.correct=0;u.answered=[];}
- }else{
-  state.guestCompleted=[];state.guestPoints=0;state.guestCorrect=0;state.guestAnswered=[];
- }
- saveState();refreshUI();
- document.getElementById("profileMessage").textContent="Progresso local apagado.";
+e.preventDefault();
+const email=document.getElementById("authEmail").value.trim().toLowerCase(),password=document.getElementById("authPassword").value,name=document.getElementById("authName").value.trim()||"Estudante",message=document.getElementById("authMessage");
+if(!email||password.length<4){message.textContent="Preenche os campos. A senha deve ter pelo menos 4 caracteres.";return}
+state.accounts=state.accounts||{};
+if(authMode==="register"){
+if(state.accounts[email]){message.textContent="Já existe um perfil local com esse e-mail. Escolhe entrar.";return}
+const account=ensureFields({name,password,completed:[...(state.guestCompleted||[])],points:Number(state.guestPoints)||0,correct:Number(state.guestCorrect)||0,answered:[...(state.guestAnswered||[])],tasks:state.guestTasks||{},neimarBonusGiven:false});
+giveNeimarBonus(account);
+state.accounts[email]=account;
+}else{
+const account=state.accounts[email];
+if(!account||account.password!==password){message.textContent="Perfil não encontrado ou senha incorreta neste navegador.";return}
+if(!account.name)account.name="Estudante";
+ensureFields(account);giveNeimarBonus(account);
+}
+state.user=email;
+if(saveState()){refreshUI();message.textContent=(state.accounts[email].name||"").trim().toLowerCase()==="neimar"?"Perfil aberto! Bónus de Neimar verificado. 💜":"Perfil aberto com sucesso!";setTimeout(hideLogin,900)}
 });
 
-renderQuestion();
-refreshUI();
+document.getElementById("exportProgress").addEventListener("click",()=>{
+const data={exportedAt:new Date().toISOString(),profile:state.user||"Visitante",progress:progress()};
+const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+a.href=url;a.download="angel-lualab-progresso.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+document.getElementById("profileMessage").textContent="Exportação preparada."
+});
+document.getElementById("resetProgress").addEventListener("click",()=>{
+if(!confirm("Apagar o progresso local? Esta ação não pode ser desfeita."))return;
+if(state.user){const u=state.accounts[state.user];if(u){u.completed=[];u.points=0;u.correct=0;u.answered=[];u.tasks={};u.neimarBonusGiven=(u.name||"").trim().toLowerCase()==="neimar"}}
+else{state.guestCompleted=[];state.guestPoints=0;state.guestCorrect=0;state.guestAnswered=[];state.guestTasks={}}
+saveState();refreshUI();document.getElementById("profileMessage").textContent="Progresso local apagado."
+});
+
+renderQuestion();applyLoggedInBonus();refreshUI();updateTaskTimer();
 </script>
 </body>
 </html>
