@@ -4,303 +4,669 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#150b25">
-<meta name="description" content="Angel LuaLab: consulta de IP público e aprendizagem sobre redes e privacidade.">
-<title>Angel LuaLab</title>
-
+<meta name="theme-color" content="#100817">
+<title>Angel LuaLab — Academia Digital</title>
 <style>
+:root{
+  --bg:#100817;
+  --panel:#1c1028;
+  --panel2:#281639;
+  --gold:#f4d27d;
+  --purple:#b58aff;
+  --text:#f8f0ff;
+  --muted:#bdb0cb;
+  --border:#513765;
+  --green:#91e8bc;
+}
 *{box-sizing:border-box}
-body{margin:0;padding:12px;background:#150b25;color:#fff;font-family:Arial,sans-serif;line-height:1.6}
-main{max-width:650px;margin:18px auto;padding:22px;background:#291740;border:1px solid #f1d17c;border-radius:18px}
-h1,h2,h3{color:#f1d17c;line-height:1.35}
-h1{font-size:28px}
-h2{font-size:21px;margin-top:24px}
-h3{font-size:17px}
-button{padding:12px 15px;background:#f1d17c;color:#241333;border:0;border-radius:9px;font-weight:bold;cursor:pointer;margin:5px 4px 5px 0}
-.alt{background:transparent;color:#f1d17c;border:1px solid #f1d17c}
-.notice,.entry,.lesson{background:#1c102b;padding:14px;border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
-.small{color:#d0c2df;font-size:14px;line-height:1.6}
-#ip{color:#f1d17c;overflow-wrap:anywhere;word-break:break-word}
-#consent{accent-color:#f1d17c}
-hr{border:0;border-top:1px solid #59416c;margin:25px 0}
-.lesson h3{margin-top:0}
-.lesson li{margin:9px 0}
-.ip-note{color:#f1d17c;font-size:14px}
-footer{margin-top:25px;border-top:1px solid #59416c;padding-top:12px}
-@media(max-width:480px){main{padding:16px}h1{font-size:25px}}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;background:
+  radial-gradient(ellipse at 10% 0%,#45215a66,transparent 45%),
+  radial-gradient(ellipse at 100% 30%,#39204a55,transparent 40%),
+  var(--bg);
+  color:var(--text);font-family:Arial,sans-serif;line-height:1.6;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px
+}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{
+  position:sticky;top:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px 5%;background:#100817ed;backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border)
+}
+.brand{font-weight:900;color:var(--gold);font-size:18px;letter-spacing:.5px}
+.brand span{color:var(--purple)}
+.nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.nav button,.secondary{
+  background:transparent;color:var(--text);border:1px solid var(--border);
+  border-radius:10px;padding:8px 11px
+}
+.nav button:hover,.secondary:hover{border-color:var(--gold);color:var(--gold)}
+.primary{
+  border:0;border-radius:11px;padding:12px 16px;
+  background:linear-gradient(110deg,var(--gold),#e8b9ff);
+  color:#21102c;font-weight:800
+}
+.primary:hover{filter:brightness(1.08)}
+.danger{color:#ffc0d0;border:1px solid #9b4764;background:#391628}
+.wrap{max-width:1100px;margin:auto;padding:25px 18px 60px}
+.hero{
+  position:relative;overflow:hidden;padding:clamp(25px,6vw,60px);
+  border:1px solid #77558b;border-radius:25px;
+  background:linear-gradient(135deg,#321b45ed,#171020f5 70%);
+  box-shadow:0 15px 60px #0005
+}
+.hero:after{
+  content:"✦";position:absolute;right:8%;top:10%;
+  font-size:clamp(90px,18vw,190px);color:#f4d27d15;
+  pointer-events:none
+}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(34px,7vw,64px);line-height:1.05;margin:15px 0}
+h1 span{color:var(--gold)}
+h2{font-size:26px;line-height:1.25}
+h3{line-height:1.3}
+p{color:#e3d8ed}
+.muted{color:var(--muted);font-size:14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.section{margin-top:38px}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  min-width:0;padding:20px;border:1px solid var(--border);
+  background:linear-gradient(145deg,#241432,#1a1023);
+  border-radius:17px;box-shadow:0 10px 28px #0002
+}
+.card:hover{border-color:#9470b1}
+.iconbox{
+  display:grid;place-items:center;width:47px;height:47px;border-radius:14px;
+  background:#4b2b5b;color:var(--gold);font-size:23px
+}
+.card h3{margin-bottom:7px}
+.tag{display:inline-block;border:1px solid #674a7b;border-radius:20px;padding:4px 9px;font-size:11px;color:var(--purple)}
+.stat{font-size:30px;font-weight:900;color:var(--gold)}
+.progress{height:9px;background:#3a2948;border-radius:20px;overflow:hidden}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--gold));transition:width .3s}
+.lessonlist{display:grid;gap:12px}
+.lessonrow{
+  display:flex;align-items:center;gap:14px;padding:15px;
+  background:#20132c;border:1px solid var(--border);border-radius:14px
+}
+.lessonrow .grow{flex:1;min-width:0}
+.lessonrow h3{margin:0 0 5px}
+.lessonrow p{margin:0}
+.lessonrow button{flex-shrink:0}
+.formbox{max-width:480px;margin:30px auto}
+.field{display:grid;gap:6px;margin:14px 0}
+.field label{color:var(--muted);font-size:14px}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px;background:#120b1b;border:1px solid var(--border);
+  border-radius:10px;color:white
+}
+.field textarea{min-height:110px;resize:vertical}
+.notice{padding:13px;background:#30213b;border-left:3px solid var(--gold);border-radius:7px;font-size:13px;color:var(--muted)}
+.hidden{display:none!important}
+.badge{color:var(--green);font-size:12px;font-weight:bold}
+.answer{
+  display:block;width:100%;text-align:left;padding:12px;margin:8px 0;
+  background:#1a1024;color:white;border:1px solid var(--border);border-radius:10px
+}
+.answer:hover{border-color:var(--purple)}
+.answer.correct{border-color:var(--green);background:#163326}
+.answer.wrong{border-color:#f58caa;background:#391628}
+.codepreview{
+  padding:15px;border-radius:12px;background:#0c0811;border:1px solid #493358;
+  overflow-wrap:anywhere;color:#d7c5f2;font-family:monospace;white-space:pre-wrap
+}
+footer{text-align:center;border-top:1px solid var(--border);padding:24px 10px;margin-top:45px}
+.toast{margin-top:12px;color:var(--green);font-size:14px}
+@media(max-width:760px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .topbar{padding:10px 12px;align-items:flex-start}
+  .nav{justify-content:flex-end}
+  .nav button{font-size:12px;padding:7px}
+}
+@media(max-width:500px){
+  .grid,.grid.two{grid-template-columns:1fr}
+  .topbar{display:block}
+  .nav{margin-top:10px;justify-content:flex-start}
+  .hero{padding:24px 19px}
+  .lessonrow{align-items:flex-start;flex-wrap:wrap}
+  .lessonrow .grow{min-width:65%}
+}
 </style>
 </head>
 
 <body>
-<main>
-<button class="alt" id="language" type="button">🇺🇸 English</button>
+<header class="topbar">
+  <a class="brand" href="#inicio">☾ ANGEL <span>LŪALAB</span></a>
+  <nav class="nav" aria-label="Navegação principal">
+    <button data-go="inicio">Início</button>
+    <button data-go="aulas">Aulas</button>
+    <button data-go="praticas">Práticas</button>
+    <button data-go="perfil">Perfil</button>
+    <button id="accountBtn" class="primary">Entrar</button>
+  </nav>
+</header>
 
-<h1>☾ Angel LuaLab</h1>
-<p class="small">
-  🌙 <span data-t="created">Criado em:</span>
-  <time datetime="">DD/MM/AAAA</time>
-</p>
+<div class="wrap">
+  <section id="inicio">
+    <div class="hero">
+      <div class="eyebrow">ACADEMIA DIGITAL • DESDE 15.10.2026</div>
+      <h1>O teu próximo nível começa <span>aqui.</span></h1>
+      <p>Aprende programação, explora a tecnologia e transforma curiosidade em conhecimento. Um passo de cada vez.</p>
+      <p class="muted">✦ Aulas • Exercícios • Progresso pessoal • Segurança digital</p>
+      <div class="actions">
+        <button class="primary" data-go="aulas">Explorar aulas →</button>
+        <button class="secondary" data-go="praticas">Experimentar exercícios</button>
+      </div>
+    </div>
 
-<p class="small" data-t="intro">
-Aprende sobre tecnologia, redes e privacidade online.
-</p>
+    <section class="section">
+      <div class="sectionhead">
+        <h2>O teu painel</h2>
+        <span class="tag" id="welcomeTag">VISITANTE</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="iconbox">📚</div>
+          <p class="muted">Aulas concluídas</p>
+          <div class="stat" id="statLessons">0</div>
+          <div class="progress"><span id="lessonBar"></span></div>
+        </article>
+        <article class="card">
+          <div class="iconbox">✦</div>
+          <p class="muted">Pontos de aprendizagem</p>
+          <div class="stat" id="statPoints">0</div>
+          <p class="muted">Ganhos ao concluir aulas e exercícios.</p>
+        </article>
+        <article class="card">
+          <div class="iconbox">🎯</div>
+          <p class="muted">Exercícios acertados</p>
+          <div class="stat" id="statQuiz">0</div>
+          <p class="muted">Continua a praticar para melhorar.</p>
+        </article>
+      </div>
+    </section>
 
-<h2 data-t="title">Consulta de IP público</h2>
+    <section class="section">
+      <div class="sectionhead">
+        <h2>Começa por aqui</h2>
+        <span class="muted">Para iniciantes</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="iconbox">🌐</div>
+          <h3>HTML</h3>
+          <p class="muted">Aprende a criar a estrutura de páginas web.</p>
+          <button class="secondary" data-lesson="html">Abrir aula</button>
+        </article>
+        <article class="card">
+          <div class="iconbox">🎨</div>
+          <h3>CSS</h3>
+          <p class="muted">Descobre cores, estilos e layouts.</p>
+          <button class="secondary" data-lesson="css">Abrir aula</button>
+        </article>
+        <article class="card">
+          <div class="iconbox">⚡</div>
+          <h3>JavaScript</h3>
+          <p class="muted">Dá vida aos teus projetos com interação.</p>
+          <button class="secondary" data-lesson="js">Abrir aula</button>
+        </article>
+      </div>
+    </section>
+  </section>
 
-<div class="notice">
-<strong data-t="privacyTitle">Aviso de privacidade</strong>
-<p data-t="privacy">
-Ao consultar, o teu IP público será solicitado à API ipify.
-Esse serviço externo recebe a solicitação e poderá processar o teu IP.
-O histórico fica somente neste navegador.
-</p>
+  <section id="aulas" class="section">
+    <div class="eyebrow">BIBLIOTECA DE CONHECIMENTO</div>
+    <h2>As tuas aulas</h2>
+    <p class="muted">Estuda ao teu ritmo. O progresso fica guardado neste navegador.</p>
+    <div id="lessonList" class="lessonlist"></div>
+  </section>
+
+  <section id="lessonView" class="section hidden">
+    <button class="secondary" id="backLessons">← Voltar às aulas</button>
+    <article class="card">
+      <span class="tag" id="lessonCategory">AULA</span>
+      <h2 id="lessonTitle"></h2>
+      <div id="lessonContent"></div>
+      <div class="actions">
+        <button class="primary" id="completeLesson">Marcar como concluída ✓</button>
+      </div>
+      <p class="toast" id="lessonMessage" aria-live="polite"></p>
+    </article>
+  </section>
+
+  <section id="praticas" class="section">
+    <div class="eyebrow">LABORATÓRIO INTERATIVO</div>
+    <h2>Área de práticas</h2>
+    <p class="muted">Escolhe a resposta correta. Recebes feedback imediato e pontos pelas respostas certas.</p>
+    <div class="card">
+      <span class="tag" id="quizCounter">EXERCÍCIO</span>
+      <h3 id="quizQuestion"></h3>
+      <div id="quizAnswers"></div>
+      <p id="quizFeedback" class="toast" aria-live="polite"></p>
+      <button id="nextQuestion" class="primary">Próximo exercício →</button>
+    </div>
+
+    <div class="section">
+      <h2>Experimenta código</h2>
+      <p class="muted">Escreve uma mensagem e vê como o JavaScript a apresenta.</p>
+      <div class="field">
+        <label for="practiceText">A tua mensagem</label>
+        <input id="practiceText" maxlength="120" placeholder="Olá, mundo!">
+      </div>
+      <button id="runPractice" class="primary">Executar exemplo</button>
+      <div class="codepreview" id="practiceOutput">O resultado aparecerá aqui.</div>
+      <p class="muted">Este exercício demonstra texto dinâmico. Não executa código arbitrário.</p>
+    </div>
+  </section>
+
+  <section id="perfil" class="section">
+    <div class="eyebrow">A TUA JORNADA</div>
+    <h2>Perfil e progresso</h2>
+    <div class="card">
+      <div class="iconbox">🌙</div>
+      <h3 id="profileName">Visitante</h3>
+      <p id="profileEmail" class="muted">Ainda não iniciaste sessão.</p>
+      <div class="grid two">
+        <div>
+          <p class="muted">Pontos acumulados</p>
+          <div class="stat" id="profilePoints">0</div>
+        </div>
+        <div>
+          <p class="muted">Aulas completas</p>
+          <div class="stat" id="profileLessons">0</div>
+        </div>
+      </div>
+      <div class="progress"><span id="profileBar"></span></div>
+      <p class="muted" id="profileProgressText">Começa a tua primeira aula!</p>
+      <div class="actions">
+        <button class="primary" id="profileAccount">Entrar / Criar conta</button>
+        <button class="secondary" id="exportProgress">Exportar progresso</button>
+        <button class="danger" id="resetProgress">Apagar progresso local</button>
+      </div>
+      <p id="profileMessage" class="toast" aria-live="polite"></p>
+    </div>
+    <div class="notice" style="margin-top:15px">
+      Esta versão guarda os dados no armazenamento local do navegador.
+      Não utilizes uma senha real ou repetida de outras contas.
+      O login local não é adequado para proteger informações pessoais.
+    </div>
+  </section>
+
+  <section id="login" class="section hidden">
+    <div class="card formbox">
+      <button id="closeLogin" class="secondary">← Voltar</button>
+      <div class="eyebrow" style="margin-top:18px">A TUA CONTA</div>
+      <h2 id="authTitle">Entrar no Angel LuaLab</h2>
+      <p class="muted">Cria um perfil local para acompanhar as tuas aulas neste navegador.</p>
+      <form id="authForm">
+        <div class="field" id="nameField">
+          <label for="authName">Nome de utilizador</label>
+          <input id="authName" maxlength="30" autocomplete="nickname" placeholder="O teu nome">
+        </div>
+        <div class="field">
+          <label for="authEmail">E-mail (identificador local)</label>
+          <input id="authEmail" type="email" required maxlength="120" autocomplete="email" placeholder="exemplo@email.com">
+        </div>
+        <div class="field">
+          <label for="authPassword">Senha local</label>
+          <input id="authPassword" type="password" required minlength="4" maxlength="100" autocomplete="off" placeholder="Cria uma senha apenas para este teste">
+        </div>
+        <button class="primary" type="submit" id="submitAuth">Criar perfil</button>
+      </form>
+      <button class="secondary" id="switchAuth">Já tenho perfil local</button>
+      <p class="toast" id="authMessage" aria-live="polite"></p>
+      <p class="muted">Aviso: o perfil e a senha ficam neste navegador. Não são contas reais na internet.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">☾ ANGEL <span>LUALAB</span></div>
+    <p class="muted">Criado em 15/10/2026 · Academia Digital</p>
+    <p class="muted">Aprende, pratica e cria com responsabilidade. ✦</p>
+  </footer>
 </div>
 
-<p>
-<label>
-<input type="checkbox" id="consent">
-<span data-t="consent">Entendi e autorizo a consulta.</span>
-</label>
-</p>
-
-<button id="check" type="button" data-t="check">Consultar meu IP</button>
-<p id="status" class="small" aria-live="polite"></p>
-<h2 id="ip" aria-live="polite"></h2>
-
-<hr>
-
-<h2 data-t="history">Histórico local</h2>
-<p class="small" data-t="historyInfo">
-Os registos ficam neste navegador. Não são enviados para uma lista central.
-Outras pessoas que utilizem o mesmo navegador podem ter acesso a eles.
-</p>
-
-<button class="alt" id="refresh" type="button" data-t="refresh">Atualizar</button>
-<button id="delete" type="button" data-t="delete">Apagar histórico</button>
-<div id="records"></div>
-
-<hr>
-
-<section id="aprender-ip">
-<h2 data-t="learnTitle">📚 Aprende sobre endereços IP</h2>
-<p data-t="learnIntro">
-Descobre como os dispositivos comunicam pela internet e como proteger a tua privacidade.
-</p>
-
-<article class="lesson">
-<h3 data-t="whatTitle">🌐 O que é um IP?</h3>
-<p data-t="whatText">
-Um endereço IP é utilizado para encaminhar informações entre dispositivos numa rede.
-O IP público está associado à ligação que utilizas para aceder à internet.
-</p>
-</article>
-
-<article class="lesson">
-<h3 data-t="revealTitle">🔎 O que um IP pode revelar?</h3>
-<p data-t="revealText">
-Pode indicar uma localização aproximada e informações sobre o fornecedor de internet.
-Não revela automaticamente o endereço exato da tua casa nem a identidade de uma pessoa.
-</p>
-</article>
-
-<article class="lesson">
-<h3 data-t="protectTitle">🛡️ Como proteger a tua privacidade</h3>
-<ul>
-<li data-t="tip1">Evita publicar o teu IP em espaços públicos.</li>
-<li data-t="tip2">Não abras links suspeitos.</li>
-<li data-t="tip3">Não partilhes dados pessoais com desconhecidos.</li>
-<li data-t="tip4">Lê os avisos de privacidade dos sites.</li>
-<li data-t="tip5">Mantém os teus dispositivos e aplicações atualizados.</li>
-</ul>
-</article>
-
-<article class="lesson">
-<h3 data-t="publicPrivateTitle">🔐 IP público e IP privado</h3>
-<p data-t="publicPrivateText">
-O IP público está associado à ligação à internet. O IP privado é utilizado para
-comunicar dentro de uma rede local, como o Wi-Fi de casa.
-</p>
-</article>
-
-<p class="ip-note" data-t="learnNote">
-💜 Consulta apenas o teu IP ou informações que tens autorização para consultar.
-</p>
-</section>
-
-<footer>
-<p class="small" data-t="footer">
-Um IP identifica uma ligação de rede e não revela necessariamente o endereço residencial exato.
-</p>
-<p class="small">☾ Angel LuaLab · <span data-t="footerTag">Aprender com segurança.</span></p>
-</footer>
-</main>
-
 <script>
-const translations={
-pt:{
-created:"Criado em:",intro:"Aprende sobre tecnologia, redes e privacidade online.",
-title:"Consulta de IP público",privacyTitle:"Aviso de privacidade",
-privacy:"Ao consultar, o teu IP público será solicitado à API ipify. Esse serviço externo recebe a solicitação e poderá processar o teu IP. O histórico fica somente neste navegador.",
-consent:"Entendi e autorizo a consulta.",check:"Consultar meu IP",
-history:"Histórico local",
-historyInfo:"Os registos ficam neste navegador. Não são enviados para uma lista central. Outras pessoas que utilizem o mesmo navegador podem ter acesso a eles.",
-refresh:"Atualizar",delete:"Apagar histórico",
-learnTitle:"📚 Aprende sobre endereços IP",
-learnIntro:"Descobre como os dispositivos comunicam pela internet e como proteger a tua privacidade.",
-whatTitle:"🌐 O que é um IP?",
-whatText:"Um endereço IP é utilizado para encaminhar informações entre dispositivos numa rede. O IP público está associado à ligação que utilizas para aceder à internet.",
-revealTitle:"🔎 O que um IP pode revelar?",
-revealText:"Pode indicar uma localização aproximada e informações sobre o fornecedor de internet. Não revela automaticamente o endereço exato da tua casa nem a identidade de uma pessoa.",
-protectTitle:"🛡️ Como proteger a tua privacidade",
-tip1:"Evita publicar o teu IP em espaços públicos.",
-tip2:"Não abras links suspeitos.",
-tip3:"Não partilhes dados pessoais com desconhecidos.",
-tip4:"Lê os avisos de privacidade dos sites.",
-tip5:"Mantém os teus dispositivos e aplicações atualizados.",
-publicPrivateTitle:"🔐 IP público e IP privado",
-publicPrivateText:"O IP público está associado à ligação à internet. O IP privado é utilizado para comunicar dentro de uma rede local, como o Wi-Fi de casa.",
-learnNote:"💜 Consulta apenas o teu IP ou informações que tens autorização para consultar.",
-footer:"Um IP identifica uma ligação de rede e não revela necessariamente o endereço residencial exato.",
-footerTag:"Aprender com segurança.",
-ask:"Marca a autorização antes de continuar.",loading:"A consultar...",
-success:"Consulta concluída!",error:"Não foi possível consultar o IP. Verifica a ligação.",
-empty:"Nenhum registo guardado.",date:"Data",
-confirm:"Apagar todo o histórico deste navegador?",
-deleted:"Histórico apagado.",lang:"🇺🇸 English"
-},
-en:{
-created:"Created on:",intro:"Learn about technology, networks, and online privacy.",
-title:"Public IP Checker",privacyTitle:"Privacy notice",
-privacy:"When you check, your public IP is requested from the ipify API. This external service receives the request and may process your IP. History is stored only in this browser.",
-consent:"I understand and consent to the check.",check:"Check my IP",
-history:"Local history",
-historyInfo:"Records are stored in this browser and are not sent to a central list. Other people using this browser may access them.",
-refresh:"Refresh",delete:"Delete history",
-learnTitle:"📚 Learn about IP addresses",
-learnIntro:"Discover how devices communicate online and how to protect your privacy.",
-whatTitle:"🌐 What is an IP?",
-whatText:"An IP address routes information between devices on a network. A public IP is associated with the connection used to access the internet.",
-revealTitle:"🔎 What can an IP reveal?",
-revealText:"It may indicate an approximate location and internet provider information. It does not automatically reveal an exact home address or a person's identity.",
-protectTitle:"🛡️ How to protect your privacy",
-tip1:"Avoid posting your IP in public spaces.",
-tip2:"Do not open suspicious links.",
-tip3:"Do not share personal information with strangers.",
-tip4:"Read websites' privacy notices.",
-tip5:"Keep your devices and apps updated.",
-publicPrivateTitle:"🔐 Public and private IPs",
-publicPrivateText:"A public IP is associated with an internet connection. A private IP is used within a local network, such as home Wi-Fi.",
-learnNote:"💜 Only check your own IP or information you are authorized to access.",
-footer:"An IP identifies a network connection and does not necessarily reveal an exact home address.",
-footerTag:"Learn safely.",
-ask:"Please consent before continuing.",loading:"Checking...",
-success:"Check complete!",error:"Could not retrieve the IP. Check your connection.",
-empty:"No saved records.",date:"Date",
-confirm:"Delete all history in this browser?",
-deleted:"History deleted.",lang:"🇧🇷 Português"
+const lessons = [
+ {id:"html",category:"HTML",title:"Aula 1 — A estrutura de uma página",level:"Iniciante",minutes:5,
+ content:`<p>HTML significa <strong>HyperText Markup Language</strong>. É usado para organizar o conteúdo de uma página web.</p>
+ <h3>Exemplo de estrutura</h3>
+ <div class="codepreview">&lt;h1&gt;Olá, mundo!&lt;/h1&gt;\n&lt;p&gt;Esta é a minha página.&lt;/p&gt;</div>
+ <p><code>&lt;h1&gt;</code> representa um título principal e <code>&lt;p&gt;</code> representa um parágrafo.</p>
+ <p><strong>Desafio:</strong> identifica qual etiqueta é utilizada para um parágrafo: <code>&lt;p&gt;</code>.</p>`},
+ {id:"css",category:"CSS",title:"Aula 2 — Cores e estilos",level:"Iniciante",minutes:6,
+ content:`<p>CSS significa <strong>Cascading Style Sheets</strong>. Serve para definir a aparência de páginas HTML.</p>
+ <div class="codepreview">h1 {\n  color: purple;\n  font-size: 32px;\n}</div>
+ <p><code>color</code> muda a cor do texto. <code>font-size</code> muda o tamanho da letra.</p>
+ <p>Podes experimentar cores, margens, fundos e bordas para criar o teu próprio visual.</p>`},
+ {id:"js",category:"JavaScript",title:"Aula 3 — Interatividade",level:"Iniciante",minutes:7,
+ content:`<p>JavaScript permite adicionar comportamentos a páginas web, como botões interativos e mensagens.</p>
+ <div class="codepreview">const mensagem = "Olá!";\nconsole.log(mensagem);</div>
+ <p><code>const</code> cria uma variável que não pode ser reatribuída. <code>console.log()</code> escreve uma mensagem na consola.</p>
+ <p>O exemplo interativo da área de práticas usa JavaScript para apresentar o texto que escreveres.</p>`},
+ {id:"privacy",category:"Segurança",title:"Aula 4 — Privacidade na internet",level:"Iniciante",minutes:5,
+ content:`<p>A privacidade digital é o cuidado com os dados que partilhas e com as permissões que concedes.</p>
+ <h3>Boas práticas</h3>
+ <ul><li>Usa senhas diferentes em serviços importantes.</li><li>Ativa a autenticação de dois fatores quando disponível.</li><li>Desconfia de mensagens que pedem dados pessoais.</li><li>Revê as permissões das aplicações.</li></ul>
+ <p>Um endereço IP pode indicar uma localização aproximada, mas não revela automaticamente o endereço exato da tua casa.</p>`},
+ {id:"networks",category:"Redes",title:"Aula 5 — IP público e privado",level:"Iniciante",minutes:6,
+ content:`<p>Um endereço IP ajuda a encaminhar dados numa rede.</p>
+ <p><strong>IP público:</strong> associado à ligação usada para aceder à internet.</p>
+ <p><strong>IP privado:</strong> utilizado na comunicação dentro de uma rede local, como o Wi-Fi de casa.</p>
+ <p>Os endereços IP, por si só, não são uma forma garantida de identificar uma pessoa.</p>`},
+ {id:"web",category:"Web",title:"Aula 6 — Como funciona um site",level:"Iniciante",minutes:5,
+ content:`<p>Um site é composto por recursos que o navegador carrega para apresentar uma página.</p>
+ <ul><li><strong>HTML:</strong> estrutura.</li><li><strong>CSS:</strong> aparência.</li><li><strong>JavaScript:</strong> interatividade.</li><li><strong>Servidor:</strong> entrega os ficheiros e pode processar dados.</li></ul>
+ <p>O GitHub Pages publica ficheiros estáticos. Para contas reais e dados sincronizados, é necessário um serviço de backend.</p>`}
+];
+
+const questions = [
+ {q:"Qual linguagem organiza a estrutura de uma página web?",a:["HTML","CSS","Excel"],correct:0,why:"HTML define a estrutura do conteúdo."},
+ {q:"Para que serve principalmente o CSS?",a:["Guardar senhas","Estilizar uma página","Criar endereços IP"],correct:1,why:"CSS controla cores, tamanhos, espaçamentos e layout."},
+ {q:"O que o JavaScript pode fazer numa página?",a:["Adicionar interatividade","Substituir toda a internet","Garantir anonimato total"],correct:0,why:"JavaScript pode responder a ações e atualizar o conteúdo."},
+ {q:"Um IP público revela sempre a morada exata?",a:["Sim, sempre","Não, não necessariamente","Revela sempre o nome"],correct:1,why:"A localização obtida por IP costuma ser aproximada."},
+ {q:"Onde fica guardado o progresso desta versão?",a:["Em todos os computadores","Num servidor central","No navegador local"],correct:2,why:"Esta versão utiliza o armazenamento local do navegador."},
+ {q:"Qual é uma boa prática de segurança?",a:["Reutilizar todas as senhas","Partilhar códigos de acesso","Ativar autenticação de dois fatores"],correct:2,why:"A autenticação adicional pode ajudar a proteger as contas."}
+];
+
+const STORE="angelLuaLabPlatformV1";
+let state=loadState();
+let authMode="register";
+let currentLesson=null;
+let quizIndex=0;
+let answered=false;
+
+function freshState(){
+ return {user:null,completed:[],points:0,correct:0,answered:[],accounts:{},guestCompleted:[],guestPoints:0,guestCorrect:0,guestAnswered:[]};
 }
-};
-
-let lang=navigator.language.toLowerCase().startsWith("en")?"en":"pt";
-const key="angelLuaLabHistory";
-const t=k=>translations[lang][k];
-
-function getHistory(){
-try{
-const data=JSON.parse(localStorage.getItem(key)||"[]");
-return Array.isArray(data)?data:[];
-}catch{return []}
+function loadState(){
+ try{
+  const parsed=JSON.parse(localStorage.getItem(STORE));
+  if(parsed&&typeof parsed==="object")return {...freshState(),...parsed};
+ }catch(e){}
+ return freshState();
 }
-
-function showHistory(){
-const box=document.getElementById("records");
-box.replaceChildren();
-const items=getHistory();
-
-if(!items.length){
-box.textContent=t("empty");
-box.className="small";
-return;
+function saveState(){
+ try{
+  localStorage.setItem(STORE,JSON.stringify(state));
+  return true;
+ }catch(e){
+  document.getElementById("profileMessage").textContent="Não foi possível guardar. Verifica o espaço disponível no navegador.";
+  return false;
+ }
 }
-
-box.className="";
-items.slice().reverse().forEach(record=>{
-const div=document.createElement("div");
-div.className="entry";
-const ipLine=document.createElement("p");
-ipLine.textContent="IP: "+record.ip;
-const dateLine=document.createElement("p");
-dateLine.textContent=t("date")+": "+record.date;
-div.append(ipLine,dateLine);
-box.append(div);
+function progress(){
+ if(state.user){
+  const u=state.accounts[state.user];
+  if(u)return u;
+ }
+ return {completed:state.guestCompleted,points:state.guestPoints,correct:state.guestCorrect,answered:state.guestAnswered};
+}
+function setProgress(p){
+ if(state.user&&state.accounts[state.user])state.accounts[state.user]=p;
+ else{
+  state.guestCompleted=p.completed;
+  state.guestPoints=p.points;
+  state.guestCorrect=p.correct;
+  state.guestAnswered=p.answered;
+ }
+}
+function refreshUI(){
+ const p=progress();
+ const completed=p.completed||[];
+ const points=p.points||0;
+ const correct=p.correct||0;
+ document.getElementById("statLessons").textContent=completed.length;
+ document.getElementById("statPoints").textContent=points;
+ document.getElementById("statQuiz").textContent=correct;
+ document.getElementById("lessonBar").style.width=(completed.length/lessons.length*100)+"%";
+ document.getElementById("welcomeTag").textContent=state.user?(state.accounts[state.user].name||state.user):"VISITANTE";
+ document.getElementById("accountBtn").textContent=state.user?"Sair":"Entrar";
+ document.getElementById("profileName").textContent=state.user?(state.accounts[state.user].name||state.user):"Visitante";
+ document.getElementById("profileEmail").textContent=state.user||"Ainda não iniciaste sessão.";
+ document.getElementById("profilePoints").textContent=points;
+ document.getElementById("profileLessons").textContent=completed.length;
+ document.getElementById("profileBar").style.width=(completed.length/lessons.length*100)+"%";
+ document.getElementById("profileProgressText").textContent=completed.length===lessons.length?"Parabéns! Concluíste todas as aulas disponíveis.":`Concluíste ${completed.length} de ${lessons.length} aulas.`;
+ renderLessons();
+}
+function renderLessons(){
+ const list=document.getElementById("lessonList");
+ list.replaceChildren();
+ const p=progress();
+ lessons.forEach((l,i)=>{
+  const row=document.createElement("article");
+  row.className="lessonrow";
+  const icon=document.createElement("div");
+  icon.className="iconbox";
+  icon.textContent=["🌐","🎨","⚡","🛡️","🔗","🧩"][i];
+  const grow=document.createElement("div");
+  grow.className="grow";
+  const title=document.createElement("h3");
+  title.textContent=l.title;
+  const desc=document.createElement("p");
+  desc.className="muted";
+  desc.textContent=`${l.category} · ${l.level} · ${l.minutes} min`;
+  grow.append(title,desc);
+  const btn=document.createElement("button");
+  btn.className="secondary";
+  btn.textContent=(p.completed||[]).includes(l.id)?"Rever ✓":"Estudar";
+  btn.addEventListener("click",()=>openLesson(l.id));
+  row.append(icon,grow,btn);
+  list.append(row);
+ });
+}
+function openLesson(id){
+ currentLesson=lessons.find(l=>l.id===id);
+ if(!currentLesson)return;
+ document.getElementById("lessonCategory").textContent=currentLesson.category;
+ document.getElementById("lessonTitle").textContent=currentLesson.title;
+ document.getElementById("lessonContent").innerHTML=currentLesson.content;
+ const done=(progress().completed||[]).includes(id);
+ document.getElementById("completeLesson").textContent=done?"Concluída ✓":"Marcar como concluída ✓";
+ document.getElementById("lessonMessage").textContent=done?"Já concluíste esta aula. Podes revê-la quando quiseres.":"";
+ document.getElementById("lessonView").classList.remove("hidden");
+ document.getElementById("lessonView").scrollIntoView({behavior:"smooth"});
+}
+document.getElementById("completeLesson").addEventListener("click",()=>{
+ if(!currentLesson)return;
+ const p=progress();
+ p.completed=p.completed||[];
+ if(!p.completed.includes(currentLesson.id)){
+  p.completed.push(currentLesson.id);
+  p.points=(p.points||0)+10;
+  setProgress(p);
+  saveState();
+  refreshUI();
+  document.getElementById("lessonMessage").textContent="Aula concluída! +10 pontos ✨";
+  document.getElementById("completeLesson").textContent="Concluída ✓";
+ }else{
+  document.getElementById("lessonMessage").textContent="Esta aula já está concluída.";
+ }
 });
-}
-
-function translate(){
-document.documentElement.lang=lang==="en"?"en":"pt-BR";
-document.querySelectorAll("[data-t]").forEach(element=>{
-const value=translations[lang][element.dataset.t];
-if(value!==undefined)element.textContent=value;
+document.getElementById("backLessons").addEventListener("click",()=>{
+ document.getElementById("lessonView").classList.add("hidden");
+ document.getElementById("aulas").scrollIntoView({behavior:"smooth"});
 });
-document.getElementById("language").textContent=t("lang");
-showHistory();
-}
-
-document.getElementById("language").addEventListener("click",()=>{
-lang=lang==="pt"?"en":"pt";
-translate();
+document.querySelectorAll("[data-go]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  const id=btn.dataset.go;
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+ });
+});
+document.querySelectorAll("[data-lesson]").forEach(btn=>{
+ btn.addEventListener("click",()=>openLesson(btn.dataset.lesson));
 });
 
-document.getElementById("check").addEventListener("click",async()=>{
-const status=document.getElementById("status");
-const output=document.getElementById("ip");
-
-if(!document.getElementById("consent").checked){
-status.textContent=t("ask");
-return;
+function renderQuestion(){
+ const q=questions[quizIndex];
+ answered=false;
+ document.getElementById("quizCounter").textContent=`EXERCÍCIO ${quizIndex+1} DE ${questions.length}`;
+ document.getElementById("quizQuestion").textContent=q.q;
+ document.getElementById("quizFeedback").textContent="";
+ const box=document.getElementById("quizAnswers");
+ box.replaceChildren();
+ q.a.forEach((answer,i)=>{
+  const b=document.createElement("button");
+  b.className="answer";
+  b.textContent=answer;
+  b.addEventListener("click",()=>answerQuestion(i,b));
+  box.append(b);
+ });
+ document.getElementById("nextQuestion").textContent="Próximo exercício →";
 }
-
-status.textContent=t("loading");
-output.textContent="";
-
-try{
-const response=await fetch("https://api.ipify.org?format=json",{cache:"no-store"});
-if(!response.ok)throw new Error("Request failed");
-
-const data=await response.json();
-const ip=String(data.ip||"");
-
-const v4=/^(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)$/.test(ip);
-const v6=/^[0-9a-fA-F:]+$/.test(ip)&&ip.includes(":")&&ip.length<=45;
-
-if(!v4&&!v6)throw new Error("Invalid IP");
-
-output.textContent="IP: "+ip;
-
-try{
-const items=getHistory();
-items.push({ip:ip,date:new Date().toLocaleString()});
-localStorage.setItem(key,JSON.stringify(items));
-showHistory();
-}catch{}
-
-status.textContent=t("success");
-}catch{
-status.textContent=t("error");
+function answerQuestion(index,button){
+ if(answered)return;
+ answered=true;
+ const q=questions[quizIndex];
+ const p=progress();
+ p.answered=p.answered||[];
+ const questionKey=String(quizIndex);
+ if(index===q.correct){
+  button.classList.add("correct");
+  if(!p.answered.includes(questionKey)){
+   p.answered.push(questionKey);
+   p.correct=(p.correct||0)+1;
+   p.points=(p.points||0)+5;
+   document.getElementById("quizFeedback").textContent="Correto! +5 pontos ✨ "+q.why;
+  }else{
+   document.getElementById("quizFeedback").textContent="Correto! Já recebeste os pontos desta pergunta. "+q.why;
+  }
+ }else{
+  button.classList.add("wrong");
+  document.getElementById("quizFeedback").textContent="Ainda não! Resposta correta: "+q.a[q.correct]+". "+q.why;
+ }
+ document.querySelectorAll(".answer").forEach((b,i)=>{
+  if(i===q.correct)b.classList.add("correct");
+  b.disabled=true;
+ });
+ setProgress(p);
+ saveState();
+ refreshUI();
 }
+document.getElementById("nextQuestion").addEventListener("click",()=>{
+ quizIndex=(quizIndex+1)%questions.length;
+ renderQuestion();
+});
+document.getElementById("runPractice").addEventListener("click",()=>{
+ const value=document.getElementById("practiceText").value;
+ document.getElementById("practiceOutput").textContent=value||"Olá, mundo!";
 });
 
-document.getElementById("refresh").addEventListener("click",showHistory);
-
-document.getElementById("delete").addEventListener("click",()=>{
-if(!window.confirm(t("confirm")))return;
-try{localStorage.removeItem(key)}catch{}
-document.getElementById("ip").textContent="";
-document.getElementById("status").textContent=t("deleted");
-showHistory();
+function showLogin(){
+ document.getElementById("login").classList.remove("hidden");
+ document.getElementById("login").scrollIntoView({behavior:"smooth"});
+ document.getElementById("authMessage").textContent="";
+}
+function hideLogin(){
+ document.getElementById("login").classList.add("hidden");
+}
+function updateAuthMode(){
+ document.getElementById("authTitle").textContent=authMode==="register"?"Criar perfil local":"Entrar no perfil local";
+ document.getElementById("submitAuth").textContent=authMode==="register"?"Criar perfil":"Entrar";
+ document.getElementById("switchAuth").textContent=authMode==="register"?"Já tenho perfil local":"Quero criar um perfil";
+ document.getElementById("nameField").classList.toggle("hidden",authMode==="login");
+ document.getElementById("authPassword").value="";
+ document.getElementById("authMessage").textContent="";
+}
+document.getElementById("accountBtn").addEventListener("click",()=>{
+ if(state.user){
+  state.user=null;
+  saveState();
+  refreshUI();
+  document.getElementById("profileMessage").textContent="Sessão terminada. O teu progresso continua guardado neste navegador.";
+ }else{
+  authMode="register";
+  updateAuthMode();
+  showLogin();
+ }
+});
+document.getElementById("profileAccount").addEventListener("click",()=>{
+ if(state.user){
+  document.getElementById("profileMessage").textContent="A sessão está iniciada.";
+ }else{
+  authMode="register";
+  updateAuthMode();
+  showLogin();
+ }
+});
+document.getElementById("closeLogin").addEventListener("click",hideLogin);
+document.getElementById("switchAuth").addEventListener("click",()=>{
+ authMode=authMode==="register"?"login":"register";
+ updateAuthMode();
+});
+document.getElementById("authForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const email=document.getElementById("authEmail").value.trim().toLowerCase();
+ const password=document.getElementById("authPassword").value;
+ const name=document.getElementById("authName").value.trim()||"Estudante";
+ const message=document.getElementById("authMessage");
+ if(!email||password.length<4){
+  message.textContent="Preenche os campos. A senha de teste deve ter pelo menos 4 caracteres.";
+  return;
+ }
+ state.accounts=state.accounts||{};
+ if(authMode==="register"){
+  if(state.accounts[email]){
+   message.textContent="Já existe um perfil local com esse e-mail. Escolhe entrar.";
+   return;
+  }
+  // Demonstração local: não usar uma senha real.
+  state.accounts[email]={
+   name:name,
+   password:password,
+   completed:state.guestCompleted||[],
+   points:state.guestPoints||0,
+   correct:state.guestCorrect||0,
+   answered:state.guestAnswered||[]
+  };
+ }else{
+  const account=state.accounts[email];
+  if(!account||account.password!==password){
+   message.textContent="Perfil não encontrado ou senha incorreta neste navegador.";
+   return;
+  }
+ }
+ state.user=email;
+ if(saveState()){
+  refreshUI();
+  message.textContent="Perfil aberto com sucesso!";
+  setTimeout(hideLogin,700);
+ }
+});
+document.getElementById("exportProgress").addEventListener("click",()=>{
+ const data={exportedAt:new Date().toISOString(),profile:state.user||"Visitante",progress:progress()};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="angel-lualab-progresso.json";
+ a.click();URL.revokeObjectURL(url);
+ document.getElementById("profileMessage").textContent="Exportação preparada.";
+});
+document.getElementById("resetProgress").addEventListener("click",()=>{
+ if(!confirm("Apagar o progresso local? Esta ação não pode ser desfeita."))return;
+ if(state.user){
+  const u=state.accounts[state.user];
+  if(u){u.completed=[];u.points=0;u.correct=0;u.answered=[];}
+ }else{
+  state.guestCompleted=[];state.guestPoints=0;state.guestCorrect=0;state.guestAnswered=[];
+ }
+ saveState();refreshUI();
+ document.getElementById("profileMessage").textContent="Progresso local apagado.";
 });
 
-translate();
+renderQuestion();
+refreshUI();
 </script>
 </body>
 </html>
