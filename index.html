@@ -1,199 +1,306 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#150b25">
+<meta name="description" content="Angel LuaLab: consulta de IP público e aprendizagem sobre redes e privacidade.">
 <title>Angel LuaLab</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#150b25;color:white;font-family:Arial,sans-serif;padding:20px;min-height:100vh}
-main{max-width:600px;margin:20px auto;padding:24px;background:#291740;border:1px solid #f1d17c;border-radius:18px}
-h1,h2{color:#f1d17c}
-button{padding:12px;background:#f1d17c;color:#241333;border:0;border-radius:9px;font-weight:bold;margin:5px 4px 5px 0}
+body{margin:0;padding:12px;background:#150b25;color:#fff;font-family:Arial,sans-serif;line-height:1.6}
+main{max-width:650px;margin:18px auto;padding:22px;background:#291740;border:1px solid #f1d17c;border-radius:18px}
+h1,h2,h3{color:#f1d17c;line-height:1.35}
+h1{font-size:28px}
+h2{font-size:21px;margin-top:24px}
+h3{font-size:17px}
+button{padding:12px 15px;background:#f1d17c;color:#241333;border:0;border-radius:9px;font-weight:bold;cursor:pointer;margin:5px 4px 5px 0}
 .alt{background:transparent;color:#f1d17c;border:1px solid #f1d17c}
-.notice,.entry{background:#1c102b;padding:14px;border-radius:10px;overflow-wrap:anywhere}
-#ip{color:#f1d17c;overflow-wrap:anywhere}
-.small{color:#d0c2df;font-size:14px;line-height:1.5}
+.notice,.entry,.lesson{background:#1c102b;padding:14px;border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
+.small{color:#d0c2df;font-size:14px;line-height:1.6}
+#ip{color:#f1d17c;overflow-wrap:anywhere;word-break:break-word}
+#consent{accent-color:#f1d17c}
+hr{border:0;border-top:1px solid #59416c;margin:25px 0}
+.lesson h3{margin-top:0}
+.lesson li{margin:9px 0}
+.ip-note{color:#f1d17c;font-size:14px}
+footer{margin-top:25px;border-top:1px solid #59416c;padding-top:12px}
+@media(max-width:480px){main{padding:16px}h1{font-size:25px}}
 </style>
 </head>
+
 <body>
 <main>
-<button class="alt" id="language">🇺🇸 English</button>
+<button class="alt" id="language" type="button">🇺🇸 English</button>
+
 <h1>☾ Angel LuaLab</h1>
+<p class="small">
+  🌙 <span data-t="created">Criado em:</span>
+  <time datetime="">DD/MM/AAAA</time>
+</p>
+
+<p class="small" data-t="intro">
+Aprende sobre tecnologia, redes e privacidade online.
+</p>
+
 <h2 data-t="title">Consulta de IP público</h2>
+
 <div class="notice">
 <strong data-t="privacyTitle">Aviso de privacidade</strong>
-<p data-t="privacy">Ao consultar, seu IP público será solicitado à API ipify. O serviço externo poderá processar essa informação. O histórico desta versão fica somente neste navegador.</p>
+<p data-t="privacy">
+Ao consultar, o teu IP público será solicitado à API ipify.
+Esse serviço externo recebe a solicitação e poderá processar o teu IP.
+O histórico fica somente neste navegador.
+</p>
 </div>
-<p><label><input type="checkbox" id="consent"> <span data-t="consent">Entendi e autorizo a consulta.</span></label></p>
-<button id="check" data-t="check">Consultar meu IP</button>
+
+<p>
+<label>
+<input type="checkbox" id="consent">
+<span data-t="consent">Entendi e autorizo a consulta.</span>
+</label>
+</p>
+
+<button id="check" type="button" data-t="check">Consultar meu IP</button>
 <p id="status" class="small" aria-live="polite"></p>
-<h2 id="ip"></h2>
+<h2 id="ip" aria-live="polite"></h2>
+
 <hr>
+
 <h2 data-t="history">Histórico local</h2>
-<button class="alt" id="refresh" data-t="refresh">Atualizar</button>
-<button id="delete" data-t="delete">Apagar histórico</button>
+<p class="small" data-t="historyInfo">
+Os registos ficam neste navegador. Não são enviados para uma lista central.
+Outras pessoas que utilizem o mesmo navegador podem ter acesso a eles.
+</p>
+
+<button class="alt" id="refresh" type="button" data-t="refresh">Atualizar</button>
+<button id="delete" type="button" data-t="delete">Apagar histórico</button>
 <div id="records"></div>
-<p class="small" data-t="footer">O IP identifica a conexão à internet e não revela necessariamente seu endereço residencial exato.</p>
+
+<hr>
+
+<section id="aprender-ip">
+<h2 data-t="learnTitle">📚 Aprende sobre endereços IP</h2>
+<p data-t="learnIntro">
+Descobre como os dispositivos comunicam pela internet e como proteger a tua privacidade.
+</p>
+
+<article class="lesson">
+<h3 data-t="whatTitle">🌐 O que é um IP?</h3>
+<p data-t="whatText">
+Um endereço IP é utilizado para encaminhar informações entre dispositivos numa rede.
+O IP público está associado à ligação que utilizas para aceder à internet.
+</p>
+</article>
+
+<article class="lesson">
+<h3 data-t="revealTitle">🔎 O que um IP pode revelar?</h3>
+<p data-t="revealText">
+Pode indicar uma localização aproximada e informações sobre o fornecedor de internet.
+Não revela automaticamente o endereço exato da tua casa nem a identidade de uma pessoa.
+</p>
+</article>
+
+<article class="lesson">
+<h3 data-t="protectTitle">🛡️ Como proteger a tua privacidade</h3>
+<ul>
+<li data-t="tip1">Evita publicar o teu IP em espaços públicos.</li>
+<li data-t="tip2">Não abras links suspeitos.</li>
+<li data-t="tip3">Não partilhes dados pessoais com desconhecidos.</li>
+<li data-t="tip4">Lê os avisos de privacidade dos sites.</li>
+<li data-t="tip5">Mantém os teus dispositivos e aplicações atualizados.</li>
+</ul>
+</article>
+
+<article class="lesson">
+<h3 data-t="publicPrivateTitle">🔐 IP público e IP privado</h3>
+<p data-t="publicPrivateText">
+O IP público está associado à ligação à internet. O IP privado é utilizado para
+comunicar dentro de uma rede local, como o Wi-Fi de casa.
+</p>
+</article>
+
+<p class="ip-note" data-t="learnNote">
+💜 Consulta apenas o teu IP ou informações que tens autorização para consultar.
+</p>
+</section>
+
+<footer>
+<p class="small" data-t="footer">
+Um IP identifica uma ligação de rede e não revela necessariamente o endereço residencial exato.
+</p>
+<p class="small">☾ Angel LuaLab · <span data-t="footerTag">Aprender com segurança.</span></p>
+</footer>
 </main>
+
 <script>
-const text={
+const translations={
 pt:{
-title:"Consulta de IP público",
-privacyTitle:"Aviso de privacidade",
-privacy:"Ao consultar, seu IP público será solicitado à API ipify. O serviço externo poderá processar essa informação. O histórico desta versão fica somente neste navegador.",
-consent:"Entendi e autorizo a consulta.",
-check:"Consultar meu IP",history:"Histórico local",
+created:"Criado em:",intro:"Aprende sobre tecnologia, redes e privacidade online.",
+title:"Consulta de IP público",privacyTitle:"Aviso de privacidade",
+privacy:"Ao consultar, o teu IP público será solicitado à API ipify. Esse serviço externo recebe a solicitação e poderá processar o teu IP. O histórico fica somente neste navegador.",
+consent:"Entendi e autorizo a consulta.",check:"Consultar meu IP",
+history:"Histórico local",
+historyInfo:"Os registos ficam neste navegador. Não são enviados para uma lista central. Outras pessoas que utilizem o mesmo navegador podem ter acesso a eles.",
 refresh:"Atualizar",delete:"Apagar histórico",
-footer:"O IP identifica a conexão à internet e não revela necessariamente seu endereço residencial exato.",
-ask:"Marque a autorização antes de continuar.",
-loading:"Consultando...",success:"Consulta concluída!",
-error:"Não foi possível consultar o IP.",
-empty:"Nenhum registro salvo.",date:"Data",
+learnTitle:"📚 Aprende sobre endereços IP",
+learnIntro:"Descobre como os dispositivos comunicam pela internet e como proteger a tua privacidade.",
+whatTitle:"🌐 O que é um IP?",
+whatText:"Um endereço IP é utilizado para encaminhar informações entre dispositivos numa rede. O IP público está associado à ligação que utilizas para aceder à internet.",
+revealTitle:"🔎 O que um IP pode revelar?",
+revealText:"Pode indicar uma localização aproximada e informações sobre o fornecedor de internet. Não revela automaticamente o endereço exato da tua casa nem a identidade de uma pessoa.",
+protectTitle:"🛡️ Como proteger a tua privacidade",
+tip1:"Evita publicar o teu IP em espaços públicos.",
+tip2:"Não abras links suspeitos.",
+tip3:"Não partilhes dados pessoais com desconhecidos.",
+tip4:"Lê os avisos de privacidade dos sites.",
+tip5:"Mantém os teus dispositivos e aplicações atualizados.",
+publicPrivateTitle:"🔐 IP público e IP privado",
+publicPrivateText:"O IP público está associado à ligação à internet. O IP privado é utilizado para comunicar dentro de uma rede local, como o Wi-Fi de casa.",
+learnNote:"💜 Consulta apenas o teu IP ou informações que tens autorização para consultar.",
+footer:"Um IP identifica uma ligação de rede e não revela necessariamente o endereço residencial exato.",
+footerTag:"Aprender com segurança.",
+ask:"Marca a autorização antes de continuar.",loading:"A consultar...",
+success:"Consulta concluída!",error:"Não foi possível consultar o IP. Verifica a ligação.",
+empty:"Nenhum registo guardado.",date:"Data",
 confirm:"Apagar todo o histórico deste navegador?",
 deleted:"Histórico apagado.",lang:"🇺🇸 English"
 },
 en:{
-title:"Public IP Checker",
-privacyTitle:"Privacy notice",
-privacy:"When you check, your public IP is requested from the ipify API. The external service may process this information. History is stored only in this browser.",
-consent:"I understand and consent to the check.",
-check:"Check my IP",history:"Local history",
+created:"Created on:",intro:"Learn about technology, networks, and online privacy.",
+title:"Public IP Checker",privacyTitle:"Privacy notice",
+privacy:"When you check, your public IP is requested from the ipify API. This external service receives the request and may process your IP. History is stored only in this browser.",
+consent:"I understand and consent to the check.",check:"Check my IP",
+history:"Local history",
+historyInfo:"Records are stored in this browser and are not sent to a central list. Other people using this browser may access them.",
 refresh:"Refresh",delete:"Delete history",
-footer:"An IP identifies your internet connection and does not necessarily reveal your exact home address.",
-ask:"Please consent before continuing.",
-loading:"Checking...",success:"Check complete!",
-error:"Could not retrieve the IP.",
+learnTitle:"📚 Learn about IP addresses",
+learnIntro:"Discover how devices communicate online and how to protect your privacy.",
+whatTitle:"🌐 What is an IP?",
+whatText:"An IP address routes information between devices on a network. A public IP is associated with the connection used to access the internet.",
+revealTitle:"🔎 What can an IP reveal?",
+revealText:"It may indicate an approximate location and internet provider information. It does not automatically reveal an exact home address or a person's identity.",
+protectTitle:"🛡️ How to protect your privacy",
+tip1:"Avoid posting your IP in public spaces.",
+tip2:"Do not open suspicious links.",
+tip3:"Do not share personal information with strangers.",
+tip4:"Read websites' privacy notices.",
+tip5:"Keep your devices and apps updated.",
+publicPrivateTitle:"🔐 Public and private IPs",
+publicPrivateText:"A public IP is associated with an internet connection. A private IP is used within a local network, such as home Wi-Fi.",
+learnNote:"💜 Only check your own IP or information you are authorized to access.",
+footer:"An IP identifies a network connection and does not necessarily reveal an exact home address.",
+footerTag:"Learn safely.",
+ask:"Please consent before continuing.",loading:"Checking...",
+success:"Check complete!",error:"Could not retrieve the IP. Check your connection.",
 empty:"No saved records.",date:"Date",
 confirm:"Delete all history in this browser?",
 deleted:"History deleted.",lang:"🇧🇷 Português"
-}};
+}
+};
+
 let lang=navigator.language.toLowerCase().startsWith("en")?"en":"pt";
 const key="angelLuaLabHistory";
-const t=k=>text[lang][k];
-function translate(){
-document.documentElement.lang=lang==="en"?"en":"pt-BR";
-document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
-document.getElementById("language").textContent=t("lang");
-show();
+const t=k=>translations[lang][k];
+
+function getHistory(){
+try{
+const data=JSON.parse(localStorage.getItem(key)||"[]");
+return Array.isArray(data)?data:[];
+}catch{return []}
 }
-function get(){
-try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}
-}
-function show(){
+
+function showHistory(){
 const box=document.getElementById("records");
 box.replaceChildren();
-const items=get();
-if(!items.length){box.textContent=t("empty");return}
-items.slice().reverse().forEach(r=>{
-const div=document.createElement("div");div.className="entry";
-const a=document.createElement("p");a.textContent="IP: "+r.ip;
-const b=document.createElement("p");b.textContent=t("date")+": "+r.date;
-div.append(a,b);box.append(div);
+const items=getHistory();
+
+if(!items.length){
+box.textContent=t("empty");
+box.className="small";
+return;
+}
+
+box.className="";
+items.slice().reverse().forEach(record=>{
+const div=document.createElement("div");
+div.className="entry";
+const ipLine=document.createElement("p");
+ipLine.textContent="IP: "+record.ip;
+const dateLine=document.createElement("p");
+dateLine.textContent=t("date")+": "+record.date;
+div.append(ipLine,dateLine);
+box.append(div);
 });
 }
-document.getElementById("language").onclick=()=>{
-lang=lang==="pt"?"en":"pt";translate();
-};
-document.getElementById("check").onclick=async()=>{
+
+function translate(){
+document.documentElement.lang=lang==="en"?"en":"pt-BR";
+document.querySelectorAll("[data-t]").forEach(element=>{
+const value=translations[lang][element.dataset.t];
+if(value!==undefined)element.textContent=value;
+});
+document.getElementById("language").textContent=t("lang");
+showHistory();
+}
+
+document.getElementById("language").addEventListener("click",()=>{
+lang=lang==="pt"?"en":"pt";
+translate();
+});
+
+document.getElementById("check").addEventListener("click",async()=>{
 const status=document.getElementById("status");
-if(!document.getElementById("consent").checked){status.textContent=t("ask");return}
+const output=document.getElementById("ip");
+
+if(!document.getElementById("consent").checked){
+status.textContent=t("ask");
+return;
+}
+
 status.textContent=t("loading");
+output.textContent="";
+
 try{
 const response=await fetch("https://api.ipify.org?format=json",{cache:"no-store"});
-if(!response.ok)throw Error();
+if(!response.ok)throw new Error("Request failed");
+
 const data=await response.json();
 const ip=String(data.ip||"");
+
 const v4=/^(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)$/.test(ip);
 const v6=/^[0-9a-fA-F:]+$/.test(ip)&&ip.includes(":")&&ip.length<=45;
-if(!v4&&!v6)throw Error();
-document.getElementById("ip").textContent="IP: "+ip;
-const items=get();items.push({ip,date:new Date().toLocaleString()});
+
+if(!v4&&!v6)throw new Error("Invalid IP");
+
+output.textContent="IP: "+ip;
+
+try{
+const items=getHistory();
+items.push({ip:ip,date:new Date().toLocaleString()});
 localStorage.setItem(key,JSON.stringify(items));
-status.textContent=t("success");show();
-}catch{status.textContent=t("error")}
-};
-document.getElementById("refresh").onclick=show;
-document.getElementById("delete").onclick=()=>{
-if(confirm(t("confirm"))){
-localStorage.removeItem(key);
+showHistory();
+}catch{}
+
+status.textContent=t("success");
+}catch{
+status.textContent=t("error");
+}
+});
+
+document.getElementById("refresh").addEventListener("click",showHistory);
+
+document.getElementById("delete").addEventListener("click",()=>{
+if(!window.confirm(t("confirm")))return;
+try{localStorage.removeItem(key)}catch{}
 document.getElementById("ip").textContent="";
 document.getElementById("status").textContent=t("deleted");
-show();
-}};
+showHistory();
+});
+
 translate();
 </script>
 </body>
-  </html>
-<section id="aprender-ip" class="ip-learning">
-  <h2>📚 Aprende sobre endereços IP</h2>
-
-  <article>
-    <h3>🌐 O que é um IP?</h3>
-    <p>
-      Um endereço IP permite que dispositivos comuniquem
-      através de uma rede. O IP público está associado à
-      ligação que utilizas para aceder à internet.
-    </p>
-  </article>
-
-  <article>
-    <h3>🔎 O que um IP pode revelar?</h3>
-    <p>
-      Pode fornecer uma localização aproximada e informações
-      sobre o fornecedor de internet. Não revela
-      automaticamente o endereço exato da tua casa.
-    </p>
-  </article>
-
-  <article>
-    <h3>🛡️ Como proteger a tua privacidade</h3>
-    <ul>
-      <li>Não publiques o teu IP em locais públicos.</li>
-      <li>Evita links suspeitos.</li>
-      <li>Não partilhes dados pessoais com desconhecidos.</li>
-      <li>Verifica como os sites utilizam os teus dados.</li>
-    </ul>
-  </article>
-
-  <p class="ip-note">
-    💜 A consulta do IP deve ser transparente e autorizada.
-    O histórico local fica guardado apenas neste navegador.
-  </p>
-</section>
-
-<style>
-.ip-learning {
-  background: #21123d;
-  color: #f5efff;
-  padding: 24px;
-  border-radius: 18px;
-  margin: 24px auto;
-  max-width: 800px;
-  font-family: Arial, sans-serif;
-}
-
-.ip-learning h2,
-.ip-learning h3 {
-  color: #e8c76a;
-}
-
-.ip-learning article {
-  background: #382455;
-  padding: 16px;
-  margin: 14px 0;
-  border-radius: 12px;
-  line-height: 1.6;
-}
-
-.ip-learning li {
-  margin: 8px 0;
-}
-
-.ip-note {
-  color: #e8c76a;
-  font-size: 14px;
-  line-height: 1.6;
-}
-</style>
-
+</html>
