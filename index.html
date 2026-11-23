@@ -3,179 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escreva+ | Aulas de Escrita</title>
+<title>GameRadar — Descubra jogos</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:#f5f7fb;color:#172033}
-button,input,textarea{font:inherit}.hidden{display:none!important}
-.app{min-height:100vh}.auth{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef2ff,#f8fafc)}
-.card{width:min(430px,100%);background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:32px;box-shadow:0 20px 60px #243b5315}
-.logo{font-size:28px;font-weight:900;color:#5b5bd6;margin-bottom:8px}.muted{color:#667085}.tabs{display:flex;gap:8px;background:#f1f3f8;padding:5px;border-radius:12px;margin:22px 0}.tab{flex:1;border:0;background:transparent;padding:11px;border-radius:9px;cursor:pointer}.tab.active{background:#fff;box-shadow:0 2px 8px #00000012;font-weight:700}
-label{display:block;font-weight:700;font-size:14px;margin:14px 0 7px}input,textarea{width:100%;border:1px solid #d9deea;border-radius:11px;padding:12px;outline:none;background:#fff}input:focus,textarea:focus{border-color:#6868dc;box-shadow:0 0 0 3px #6868dc18}
-.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:800;cursor:pointer}.primary{background:#5b5bd6;color:white;width:100%;margin-top:18px}.secondary{background:#eef0f7;color:#30364d}.danger{background:#fee4e2;color:#b42318}.error{color:#b42318;font-size:13px;margin-top:10px}.success{color:#067647;font-size:13px;margin-top:10px}
-header{height:68px;background:#fff;border-bottom:1px solid #e7e9ef;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:3}.brand{font-weight:900;font-size:21px;color:#5b5bd6}.user{display:flex;align-items:center;gap:12px}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#e9e9ff;color:#4d4db9;font-weight:900}
-.layout{display:grid;grid-template-columns:250px 1fr;max-width:1250px;margin:auto;min-height:calc(100vh - 68px)}aside{padding:24px 16px;border-right:1px solid #e7e9ef;background:#fff}.nav{display:block;width:100%;text-align:left;border:0;background:transparent;padding:13px 14px;border-radius:10px;margin-bottom:5px;cursor:pointer;color:#475467;font-weight:650}.nav.active{background:#eeeeff;color:#4e4ebd}.content{padding:32px}.hero{background:linear-gradient(135deg,#5b5bd6,#7777e9);color:#fff;border-radius:20px;padding:28px;margin-bottom:25px}.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:0;opacity:.9}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}.stat{background:#ffffff22;border:1px solid #ffffff30;padding:14px;border-radius:13px}.stat b{font-size:22px;display:block}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.lesson,.exercise{background:#fff;border:1px solid #e6e8ef;border-radius:17px;padding:20px}.lesson h3,.exercise h3{margin-top:0}.tag{display:inline-block;background:#eef0ff;color:#4f4fbd;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}.lesson p{color:#667085;line-height:1.55}.lesson button{margin-top:8px}
-.page{display:none}.page.active{display:block}.exercise textarea{min-height:160px;resize:vertical}.feedback{margin-top:12px;padding:13px;border-radius:11px;background:#f4f6fa;line-height:1.5}
-@media(max-width:760px){.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid #e7e9ef;display:flex;overflow:auto;padding:10px}.nav{min-width:max-content;margin:0}.content{padding:18px}.grid,.stats{grid-template-columns:1fr}.user .username{display:none}header{padding:0 15px}}
+*{box-sizing:border-box}body{margin:0;background:#0d1020;color:#eef1ff;font-family:Inter,system-ui,Arial,sans-serif}
+button,input{font:inherit}.wrap{max-width:1200px;margin:auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:#0d1020e8;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff12}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:23px;font-weight:950;color:#8d8cff}.logo span{color:#fff}
+.nav small{color:#9da4bd}
+.hero{padding:54px 0 35px;background:radial-gradient(circle at 75% 15%,#4d45a833,transparent 35%),radial-gradient(circle at 20% 0%,#9a42c21c,transparent 30%)}
+.hero h1{font-size:clamp(32px,6vw,58px);line-height:1.02;margin:0 0 13px;letter-spacing:-2px}.hero p{max-width:650px;color:#aeb5cf;font-size:17px;line-height:1.6;margin:0}
+.search{display:flex;gap:10px;margin-top:25px;max-width:700px}.search input{flex:1;background:#171b30;border:1px solid #ffffff16;color:#fff;padding:14px 16px;border-radius:12px;outline:0}.search input:focus{border-color:#8d8cff}.search button{border:0;border-radius:12px;padding:0 20px;background:#7b79ef;color:#fff;font-weight:850;cursor:pointer}
+.filters{display:flex;gap:8px;overflow:auto;padding:16px 0 20px}.filter{white-space:nowrap;border:1px solid #ffffff16;background:#171b30;color:#b9c0d8;padding:9px 14px;border-radius:999px;cursor:pointer}.filter.active,.filter:hover{background:#7b79ef;color:#fff;border-color:#7b79ef}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:12px 0 18px}.section-head h2{margin:0;font-size:24px}.count{color:#8f97b2;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:45px}.card{background:#15192b;border:1px solid #ffffff10;border-radius:18px;overflow:hidden;transition:.18s;box-shadow:0 12px 35px #00000025}.card:hover{transform:translateY(-4px);border-color:#ffffff25}.cover{height:185px;position:relative;overflow:hidden;background:#242a44}.cover img{width:100%;height:100%;object-fit:cover;display:block}.badges{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}.badge{font-size:11px;font-weight:850;background:#090b14cc;padding:6px 8px;border-radius:7px}.badge.mobile{background:#167c55dd}.badge.pc{background:#514fd6dd}.body{padding:16px}.body h3{margin:0 0 6px;font-size:19px}.meta{display:flex;gap:7px;flex-wrap:wrap;color:#9da5bf;font-size:12px;margin-bottom:11px}.meta span{background:#20253b;padding:5px 7px;border-radius:6px}.desc{color:#aeb5ca;font-size:13px;line-height:1.5;min-height:40px;margin:0 0 14px}.actions{display:flex;gap:8px}.btn{flex:1;text-align:center;text-decoration:none;border:0;border-radius:9px;padding:10px;font-weight:800;cursor:pointer}.details{background:#242943;color:#dfe3f4}.official{background:#7b79ef;color:#fff}
+.empty{text-align:center;padding:50px;color:#9da4bd}.note{color:#7f879f;font-size:12px;padding:0 0 35px;line-height:1.5}
+footer{border-top:1px solid #ffffff10;padding:25px 0;color:#7f879f;font-size:12px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.grid{grid-template-columns:1fr}.search button{padding:0 14px}.nav small{display:none}.cover{height:210px}}
 </style>
 </head>
 <body>
+<header><div class="wrap nav"><div class="logo">Game<span>Radar</span> 🎮</div><small>Descubra seu próximo jogo</small></div></header>
 
-<section id="auth" class="auth">
-  <div class="card">
-    <div class="logo">Escreva+</div>
-    <div class="muted">Aprenda a escrever melhor, um passo de cada vez.</div>
-    <div class="tabs">
-      <button id="loginTab" class="tab active" onclick="showAuth('login')">Entrar</button>
-      <button id="registerTab" class="tab" onclick="showAuth('register')">Criar conta</button>
-    </div>
+<section class="hero"><div class="wrap">
+<h1>Encontre um jogo<br>que combina com você.</h1>
+<p>Explore recomendações para PC e celular, veja o gênero, plataforma e descubra novos jogos para jogar.</p>
+<div class="search"><input id="search" placeholder="Pesquisar jogo..."><button onclick="render()">Buscar</button></div>
+</div></section>
 
-    <form id="loginForm">
-      <label>Nome de usuário</label>
-      <input id="loginName" autocomplete="username" required placeholder="Ex.: jeie">
-      <label>Senha</label>
-      <input id="loginPass" type="password" autocomplete="current-password" required placeholder="Sua senha">
-      <button class="btn primary">Entrar</button>
-      <div id="loginMsg"></div>
-    </form>
-
-    <form id="registerForm" class="hidden">
-      <label>Nome de usuário</label>
-      <input id="regName" minlength="3" maxlength="20" required placeholder="Escolha seu nome">
-      <label>Senha</label>
-      <input id="regPass" type="password" minlength="4" required placeholder="Crie uma senha">
-      <label>Confirmar senha</label>
-      <input id="regPass2" type="password" minlength="4" required placeholder="Digite novamente">
-      <button class="btn primary">Criar minha conta</button>
-      <div id="regMsg"></div>
-    </form>
-  </div>
-</section>
-
-<section id="app" class="app hidden">
-<header>
-  <div class="brand">Escreva+</div>
-  <div class="user"><span class="username" id="welcomeUser"></span><div class="avatar" id="avatar"></div><button class="btn secondary" onclick="logout()">Sair</button></div>
-</header>
-<div class="layout">
-<aside>
-  <button class="nav active" onclick="page('home',this)">🏠 Início</button>
-  <button class="nav" onclick="page('lessons',this)">📚 Aulas</button>
-  <button class="nav" onclick="page('practice',this)">✍️ Praticar</button>
-  <button class="nav" onclick="page('progress',this)">📊 Progresso</button>
-</aside>
-<main class="content">
-<section id="home" class="page active">
-  <div class="hero">
-    <h1>Olá, <span id="heroName"></span>! 👋</h1>
-    <p>Continue suas aulas e melhore sua escrita todos os dias.</p>
-    <div class="stats">
-      <div class="stat"><small>Aulas concluídas</small><b id="statLessons">0</b></div>
-      <div class="stat"><small>Exercícios feitos</small><b id="statExercises">0</b></div>
-      <div class="stat"><small>Progresso</small><b id="statProgress">0%</b></div>
-    </div>
-  </div>
-  <h2>Comece por aqui</h2>
-  <div class="grid">
-    <div class="lesson"><span class="tag">Aula 1</span><h3>Pontuação sem mistério</h3><p>Aprenda a usar vírgulas, pontos e outros sinais para deixar suas frases mais claras.</p><button class="btn primary" onclick="openLesson(0)">Começar aula</button></div>
-    <div class="lesson"><span class="tag">Aula 2</span><h3>Como construir uma frase</h3><p>Entenda sujeito, verbo e complemento para escrever frases mais organizadas.</p><button class="btn primary" onclick="openLesson(1)">Ver aula</button></div>
-  </div>
-</section>
-
-<section id="lessons" class="page">
-<h2>Aulas de escrita</h2><p class="muted">Escolha uma aula para estudar.</p>
-<div class="grid" id="lessonGrid"></div>
-</section>
-
-<section id="practice" class="page">
-<h2>Pratique sua escrita ✍️</h2><p class="muted">Escreva e receba uma análise simples.</p>
-<div class="exercise">
-<h3>Desafio</h3><p id="challenge"></p>
-<textarea id="answer" placeholder="Escreva sua resposta aqui..."></textarea>
-<button class="btn primary" onclick="analyze()">Analisar resposta</button>
-<div id="feedback"></div>
+<main class="wrap">
+<div class="filters">
+<button class="filter active" data-filter="Todos">Todos</button>
+<button class="filter" data-filter="PC">💻 PC</button>
+<button class="filter" data-filter="Mobile">📱 Mobile</button>
+<button class="filter" data-filter="Grátis">🆓 Grátis</button>
+<button class="filter" data-filter="FPS">🔫 FPS</button>
+<button class="filter" data-filter="Terror">👻 Terror</button>
+<button class="filter" data-filter="Aventura">🗺️ Aventura</button>
 </div>
-</section>
 
-<section id="progress" class="page">
-<h2>Seu progresso 📊</h2>
-<div class="lesson"><h3 id="progressTitle">0% concluído</h3><div style="background:#e8eaf0;border-radius:99px;height:14px;overflow:hidden"><div id="bar" style="height:100%;width:0%;background:#5b5bd6"></div></div><p id="progressText"></p></div>
-</section>
+<div class="section-head"><h2>Jogos em destaque</h2><div class="count" id="count"></div></div>
+<div id="grid" class="grid"></div>
+<div id="empty" class="empty hidden">Nenhum jogo encontrado. Tente outro nome ou filtro.</div>
+<div class="note">As imagens são carregadas de fontes externas. Para publicar o site, é recomendável usar imagens/licenças que você tenha autorização para utilizar.</div>
 </main>
-</div>
-</section>
+
+<footer><div class="wrap">GameRadar — catálogo de recomendações de jogos. Feito para GitHub Pages.</div></footer>
 
 <script>
-const lessons=[
-{title:"Pontuação sem mistério",text:"O ponto encerra uma ideia. A vírgula ajuda a separar elementos e organizar a leitura. Evite colocar vírgula entre sujeito e verbo.",tip:"Dica: leia a frase em voz alta e veja se a pontuação ajuda a organizar as ideias."},
-{title:"Como construir uma frase",text:"Uma frase clara geralmente apresenta uma ideia principal. O sujeito indica quem faz ou sofre a ação e o verbo mostra a ação ou estado.",tip:"Dica: antes de escrever frases longas, organize primeiro a ideia principal."},
-{title:"Parágrafos bem organizados",text:"Um parágrafo deve desenvolver uma ideia central. Comece apresentando a ideia, desenvolva-a e finalize preparando a próxima.",tip:"Dica: evite juntar assuntos diferentes no mesmo parágrafo."},
-{title:"Clareza e escolha de palavras",text:"Prefira palavras que expressem exatamente o que você quer dizer. Frases simples e objetivas costumam ser mais fáceis de entender.",tip:"Dica: depois de escrever, retire palavras repetidas ou desnecessárias."}
+const games=[
+{name:"Standoff 2",platform:["Mobile"],genre:["FPS"],price:"Grátis",img:"https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80",desc:"FPS competitivo para celular, com partidas rápidas e vários modos.",url:"https://standoff2.com/"},
+{name:"Fortnite",platform:["PC","Mobile"],genre:["FPS","Aventura"],price:"Grátis",img:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80",desc:"Battle royale com construção, eventos e partidas com amigos.",url:"https://www.fortnite.com/"},
+{name:"Valorant",platform:["PC"],genre:["FPS"],price:"Grátis",img:"https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=900&q=80",desc:"FPS tático competitivo com agentes e habilidades únicas.",url:"https://playvalorant.com/"},
+{name:"Minecraft",platform:["PC","Mobile"],genre:["Aventura"],price:"Pago",img:"https://images.unsplash.com/photo-1587573089734-599c1d9aceb5?auto=format&fit=crop&w=900&q=80",desc:"Explore, construa e sobreviva em mundos gerados proceduralmente.",url:"https://www.minecraft.net/"},
+{name:"Roblox",platform:["PC","Mobile"],genre:["Aventura"],price:"Grátis",img:"https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=900&q=80",desc:"Uma enorme plataforma com experiências criadas pela comunidade.",url:"https://www.roblox.com/"},
+{name:"Dead by Daylight",platform:["PC","Mobile"],genre:["Terror"],price:"Pago",img:"https://images.unsplash.com/photo-1509248961158-e54f6934749c?auto=format&fit=crop&w=900&q=80",desc:"Terror multiplayer assimétrico: quatro sobreviventes contra um assassino.",url:"https://deadbydaylight.com/"},
+{name:"Terraria",platform:["PC","Mobile"],genre:["Aventura"],price:"Pago",img:"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80",desc:"Explore, lute, construa e descubra segredos em um mundo 2D.",url:"https://www.terraria.org/"},
+{name:"Counter-Strike 2",platform:["PC"],genre:["FPS"],price:"Grátis",img:"https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=80",desc:"FPS competitivo clássico baseado em estratégia e trabalho em equipe.",url:"https://www.counter-strike.net/cs2"}
 ];
 
-function getUsers(){return JSON.parse(localStorage.getItem('escreva_users')||'{}')}
-function saveUsers(u){localStorage.setItem('escreva_users',JSON.stringify(u))}
-function showAuth(type){
- document.getElementById('loginForm').classList.toggle('hidden',type!=='login');
- document.getElementById('registerForm').classList.toggle('hidden',type!=='register');
- document.getElementById('loginTab').classList.toggle('active',type==='login');
- document.getElementById('registerTab').classList.toggle('active',type==='register');
+let active="Todos";
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");active=b.dataset.filter;render()});
+search.addEventListener("keydown",e=>{if(e.key==="Enter")render()});
+
+function matches(g,q){
+let hay=(g.name+" "+g.platform.join(" ")+" "+g.genre.join(" ")+" "+g.price).toLowerCase();
+return (!q||hay.includes(q.toLowerCase())) &&
+(active==="Todos"||g.platform.includes(active)||g.genre.includes(active)||g.price===active);
 }
-document.getElementById('registerForm').onsubmit=e=>{
- e.preventDefault();let name=regName.value.trim(),pass=regPass.value,pass2=regPass2.value,u=getUsers();
- if(u[name])return msg('regMsg','Esse nome já está em uso.','error');
- if(pass!==pass2)return msg('regMsg','As senhas não coincidem.','error');
- u[name]={password:pass,lessons:[],exercises:0};saveUsers(u);login(name,pass);
-};
-document.getElementById('loginForm').onsubmit=e=>{
- e.preventDefault();let u=getUsers(),name=loginName.value.trim(),pass=loginPass.value;
- if(!u[name]||u[name].password!==pass)return msg('loginMsg','Nome ou senha incorretos.','error');
- login(name,pass);
-};
-function msg(id,t,c){document.getElementById(id).className=c;document.getElementById(id).textContent=t}
-function login(name,pass){localStorage.setItem('escreva_session',name);loadApp()}
-function loadApp(){
- let name=localStorage.getItem('escreva_session');if(!name)return;
- let u=getUsers()[name];if(!u){localStorage.removeItem('escreva_session');return}
- document.getElementById('auth').classList.add('hidden');document.getElementById('app').classList.remove('hidden');
- welcomeUser.textContent=name;heroName.textContent=name;avatar.textContent=name[0].toUpperCase();updateStats();renderLessons();
+function render(){
+let q=search.value.trim(),list=games.filter(g=>matches(g,q));count.textContent=list.length+" jogo(s)";
+grid.innerHTML=list.map(g=>`<article class="card">
+<div class="cover"><img src="${g.img}" alt="Capa de ${g.name}" loading="lazy"><div class="badges">${g.platform.map(p=>`<span class="badge ${p==="PC"?"pc":"mobile"}">${p==="PC"?"💻":"📱"} ${p}</span>`).join("")}</div></div>
+<div class="body"><h3>${g.name}</h3><div class="meta">${g.genre.map(x=>`<span>${x}</span>`).join("")}<span>${g.price}</span></div><p class="desc">${g.desc}</p><div class="actions"><button class="btn details" onclick='showDetails(${JSON.stringify(g).replace(/'/g,"&#39;")})'>Detalhes</button><a class="btn official" href="${g.url}" target="_blank" rel="noopener">Site oficial</a></div></div></article>`).join("");
+empty.classList.toggle("hidden",list.length>0);
 }
-function logout(){localStorage.removeItem('escreva_session');location.reload()}
-function current(){return getUsers()[localStorage.getItem('escreva_session')]}
-function updateUser(fn){let users=getUsers(),name=localStorage.getItem('escreva_session');fn(users[name]);saveUsers(users);updateStats()}
-function updateStats(){
- let u=current(),done=u.lessons.length, total=lessons.length;
- statLessons.textContent=done;statExercises.textContent=u.exercises;statProgress.textContent=Math.round((done/total)*100)+'%';
- progressTitle.textContent=Math.round((done/total)*100)+'% concluído';bar.style.width=Math.round((done/total)*100)+'%';
- progressText.textContent=`Você concluiu ${done} de ${total} aulas e fez ${u.exercises} exercício(s).`;
-}
-function page(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');}
-function renderLessons(){lessonGrid.innerHTML=lessons.map((l,i)=>`<div class="lesson"><span class="tag">Aula ${i+1}</span><h3>${l.title}</h3><p>${l.text}</p><button class="btn secondary" onclick="openLesson(${i})">${current().lessons.includes(i)?'✓ Concluída':'Estudar aula'}</button></div>`).join('')}
-function openLesson(i){
- let l=lessons[i],already=current().lessons.includes(i);
- document.getElementById('lessonGrid').scrollIntoView?.();
- alert(`${l.title}\\n\\n${l.text}\\n\\n${l.tip}${already?'':'\\n\\nAula marcada como concluída!'}`);
- if(!already)updateUser(u=>u.lessons.push(i));
- page('lessons',document.querySelectorAll('.nav')[1]);renderLessons();
-}
-const challenges=[
-"Escreva uma frase contando algo que você gosta de fazer.",
-"Explique em duas ou três frases por que aprender a escrever bem é importante.",
-"Escreva um pequeno parágrafo sobre seu dia."
-];
-challenge.textContent=challenges[Math.floor(Math.random()*challenges.length)];
-function analyze(){
- let t=answer.value.trim(),notes=[];
- if(t.length<20)notes.push("Tente desenvolver um pouco mais a ideia.");
- else notes.push("Seu texto tem um bom tamanho para este exercício.");
- if(!/[.!?]$/.test(t))notes.push("Lembre-se de finalizar a frase ou parágrafo com pontuação.");
- else notes.push("Boa! Você finalizou o texto com pontuação.");
- if(/[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ]/.test(t[0]||''))notes.push("O texto começa com letra maiúscula.");
- else notes.push("Tente começar o texto com letra maiúscula.");
- feedback.innerHTML='<div class="feedback">'+notes.map(x=>'• '+x).join('<br>')+'</div>';
- updateUser(u=>u.exercises++);
-}
-loadApp();
+function showDetails(g){alert(`${g.name}\\n\\nPlataforma: ${g.platform.join(", ")}\\nGênero: ${g.genre.join(", ")}\\nPreço: ${g.price}\\n\\n${g.desc}`)}
+render();
 </script>
 </body>
 </html>
